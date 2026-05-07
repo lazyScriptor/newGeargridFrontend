@@ -154,9 +154,7 @@ const GearGridLanding = () => {
               >
                 Contact
               </a>
-
               <div className="w-px h-6 bg-slate-200"></div>
-
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -165,11 +163,11 @@ const GearGridLanding = () => {
               >
                 Request Demo
               </motion.button>
-
+              // Change from href="/login" to the full subdomain URL
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/login"
+                href="https://app.geargrid.live/login"
                 className="px-6 py-3 bg-slate-900 text-white text-sm font-bold rounded-full hover:bg-amber-500 shadow-lg shadow-slate-900/10 transition-colors duration-300"
               >
                 Launch System
@@ -883,7 +881,10 @@ const GearGridLanding = () => {
             <a href="#" className="hover:text-slate-900 transition-colors">
               Terms
             </a>
-            <a href="/login" className="hover:text-amber-500 transition-colors">
+            <a
+              href="https://app.geargrid.live/login"
+              className="hover:text-amber-500 transition-colors"
+            >
               Login
             </a>
           </div>
