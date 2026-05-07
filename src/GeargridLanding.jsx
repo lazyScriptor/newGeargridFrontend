@@ -882,7 +882,7 @@ const GearGridLanding = () => {
               Terms
             </a>
             <a
-              href="https://app.geargrid.live/login"
+              href="https://app.geargrid.live/"
               className="hover:text-amber-500 transition-colors"
             >
               Login
