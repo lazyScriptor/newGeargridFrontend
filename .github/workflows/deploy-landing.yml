@@ -1,0 +1,36 @@
+name: CI/CD Landing Page Deployment
+
+on:
+  push:
+    branches: [ main ] 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: 1. Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 3. Install dependencies
+        run: npm install
+
+      - name: 4. Build Landing Page
+        run: npm run build
+
+      - name: 5. Sync files to Droplet
+        uses: Burnett01/rsync-deployments@7.0.0
+        with:
+          switches: -avzr --delete
+          path: dist/ # Make sure this matches your build output folder!
+          remote_path: /var/www/geargrid-landing # The new landing page folder!
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}

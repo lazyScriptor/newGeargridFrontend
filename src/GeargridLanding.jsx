@@ -42,9 +42,9 @@ const GearGridLanding = () => {
     setIsSubmitting(true);
 
     try {
-      // THE REAL BACKEND CALL: Change localhost to your production URL when deployed
+      // FIXED: Point to your production domain and use HTTPS
       const response = await fetch(
-        "http://localhost:5000/api/contact/request-demo",
+        "https://geargrid.live/api/contact/request-demo",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
