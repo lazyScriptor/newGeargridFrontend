@@ -166,9 +166,11 @@ const GearGridLanding = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() =>
-                  (window.location.href = "https://app.geargrid.live/login")
-                }
+                onClick={() => {
+                  window.location.href = import.meta.env.DEV
+                    ? "http://localhost:5173/login"
+                    : "https://app.geargrid.live/login";
+                }}
                 className="px-6 py-3 bg-slate-900 text-white text-sm font-bold rounded-full hover:bg-amber-500 shadow-lg shadow-slate-900/10 transition-colors duration-300"
               >
                 Launch System
