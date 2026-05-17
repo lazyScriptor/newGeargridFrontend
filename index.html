@@ -2,31 +2,115 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/gemini-svg.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0a" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- SEO -->
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Primary meta (overridden per-route by React 19 hoisting at runtime,
+         but these are what non-JS crawlers, Slack/Discord/Facebook unfurlers,
+         and Google's first-pass crawler see before JS executes.) -->
     <title>GearGrid — The OS for equipment rental businesses</title>
     <meta
       name="description"
-      content="GearGrid is a multi-tenant rental platform that unifies inventory, contracts, maintenance, and accounting. Built for modern equipment rental businesses."
+      content="GearGrid unifies inventory, rentals &amp; invoicing, maintenance, and accounting into a single secure multi-tenant platform. Built for modern equipment rental operators."
     />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="GearGrid" />
+    <meta name="application-name" content="GearGrid" />
     <link rel="canonical" href="https://geargrid.live/" />
 
-    <!-- Open Graph / social -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="GearGrid" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://geargrid.live/" />
     <meta property="og:title" content="GearGrid — The OS for equipment rental businesses" />
     <meta
       property="og:description"
-      content="Inventory, contracts, maintenance, and accounting — unified on a single secure platform."
+      content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://geargrid.live/" />
+    <meta property="og:image" content="https://geargrid.live/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GearGrid — the OS for equipment rental businesses" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GearGrid — The OS for equipment rental businesses" />
+    <meta
+      name="twitter:description"
+      content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
+    />
+    <meta name="twitter:image" content="https://geargrid.live/og-image.svg" />
+
+    <!-- Preconnect to backend so the contact form POST is faster -->
+    <link rel="preconnect" href="https://geargrid.live/api" crossorigin />
+    <link rel="dns-prefetch" href="//app.geargrid.live" />
+
+    <!-- JSON-LD: Organization + WebSite. Inline (NOT React-rendered) so
+         non-JS crawlers always see it. Page-specific schemas come via React 19
+         metadata from <SEO> components. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://geargrid.live/#org",
+            "name": "GearGrid",
+            "url": "https://geargrid.live/",
+            "logo": "https://geargrid.live/og-image.svg",
+            "sameAs": [
+              "https://app.geargrid.live"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "contact@geargrid.live",
+              "telephone": "+94-11-234-5678",
+              "areaServed": "LK",
+              "availableLanguage": ["English", "Sinhala"]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://geargrid.live/#website",
+            "url": "https://geargrid.live/",
+            "name": "GearGrid",
+            "publisher": { "@id": "https://geargrid.live/#org" },
+            "inLanguage": "en"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <!-- No-JS fallback so crawlers/browsers without JS still get content and
+         indexable text instead of a blank page. -->
+    <noscript>
+      <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 4rem auto; padding: 0 1.5rem; color: #0f172a;">
+        <h1 style="font-size: 2rem; font-weight: 600;">GearGrid</h1>
+        <p style="font-size: 1.125rem; color: #475569; line-height: 1.6;">
+          GearGrid is the operating system for equipment rental businesses —
+          inventory, contracts, maintenance, and accounting unified on a single
+          secure multi-tenant platform.
+        </p>
+        <p style="margin-top: 1.5rem;">
+          This site uses JavaScript for the full experience. Please enable it,
+          or get in touch directly at
+          <a href="mailto:contact@geargrid.live" style="color: #f59e0b;">contact@geargrid.live</a>.
+        </p>
+        <p style="margin-top: 1rem;">
+          <a href="https://app.geargrid.live/login" style="color: #f59e0b;">Sign in to the console</a>
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

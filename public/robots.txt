@@ -1,0 +1,23 @@
+# https://geargrid.live/robots.txt
+# Marketing site — open crawl. Our value is being found.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI crawlers — explicit allow so our content is discoverable in AI answers.
+# (These bots interpret the absence of an explicit rule as "allowed" but
+# being explicit avoids ambiguity if defaults ever change.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://geargrid.live/sitemap.xml

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../components/SEO";
 import Container from "../components/ui/Container";
 import SectionLabel from "../components/ui/SectionLabel";
 import Button from "../components/ui/Button";
@@ -72,8 +73,43 @@ export default function ContactPage() {
     }
   };
 
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact GearGrid",
+    description:
+      "Talk to the GearGrid team — request a demo, ask about pricing, or get technical support.",
+    url: "https://geargrid.live/contact",
+    mainEntity: {
+      "@type": "Organization",
+      name: "GearGrid",
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: "contact@geargrid.live",
+          telephone: "+94-11-234-5678",
+          areaServed: "LK",
+          availableLanguage: ["English", "Sinhala"],
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: "contact@geargrid.live",
+          areaServed: "LK",
+        },
+      ],
+    },
+  };
+
   return (
     <main className="relative">
+      <SEO
+        title="Contact us"
+        description="Talk to the GearGrid team — request a demo, ask about pricing, or get technical support. We reply within one business day."
+        path="/contact"
+        jsonLd={contactJsonLd}
+      />
       {/* ambient */}
       <div
         aria-hidden
