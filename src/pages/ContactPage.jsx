@@ -151,8 +151,8 @@ export default function ContactPage() {
                   {
                     icon: IconPhone,
                     label: "Phone",
-                    value: "+94 11 234 5678",
-                    href: "tel:+94112345678",
+                    value: "+94 7777 222 95",
+                    href: "tel:+94 7777 222 95",
                   },
                   {
                     icon: IconMapPin,
@@ -176,7 +176,9 @@ export default function ContactPage() {
                           {c.value}
                         </a>
                       ) : (
-                        <div className="mt-0.5 text-base text-slate-900">{c.value}</div>
+                        <div className="mt-0.5 text-base text-slate-900">
+                          {c.value}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -309,7 +311,10 @@ export default function ContactPage() {
                               key={t.value}
                               type="button"
                               onClick={() =>
-                                setForm((f) => ({ ...f, inquiry_type: t.value }))
+                                setForm((f) => ({
+                                  ...f,
+                                  inquiry_type: t.value,
+                                }))
                               }
                               className={`rounded-full px-4 py-2 text-sm font-medium ring-1 transition-all ${
                                 form.inquiry_type === t.value
