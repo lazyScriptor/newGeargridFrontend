@@ -37,6 +37,27 @@ const homeJsonLd = {
       },
     },
     {
+      // LocalBusiness — Sri Lanka geo + service-area signal. Helps when
+      // someone searches "equipment rental software Colombo" or similar.
+      "@type": "LocalBusiness",
+      "@id": "https://geargrid.live/#localbusiness",
+      name: "GearGrid",
+      url: "https://geargrid.live/",
+      image: "https://geargrid.live/og-image.svg",
+      priceRange: "LKR 4,900 – 9,900/month",
+      telephone: "+94-11-234-5678",
+      email: "contact@geargrid.live",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Colombo",
+        addressCountry: "LK",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Sri Lanka" },
+        { "@type": "AdministrativeArea", name: "South Asia" },
+      ],
+    },
+    {
       "@type": "FAQPage",
       mainEntity: [
         {

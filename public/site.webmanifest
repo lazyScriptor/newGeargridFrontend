@@ -1,0 +1,34 @@
+{
+  "name": "GearGrid — Equipment Rental OS",
+  "short_name": "GearGrid",
+  "description": "Multi-tenant SaaS for equipment rental businesses — inventory, contracts, maintenance, and accounting in one secure platform.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "lang": "en",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/contact",
+      "description": "Talk to the GearGrid team"
+    },
+    {
+      "name": "Sign in",
+      "short_name": "Sign in",
+      "url": "https://app.geargrid.live/login",
+      "description": "Sign in to the tenant console"
+    }
+  ]
+}

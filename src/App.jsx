@@ -1,13 +1,13 @@
 import { Suspense, lazy, useEffect } from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
 import LandingPage from "./pages/LandingPage";
 
-// Contact page is the secondary route — lazy-load so the landing page's
-// JS bundle stays as small as possible. Most visitors never click /contact;
-// they shouldn't pay for it on first paint.
+// Secondary routes are lazy so the landing-page JS bundle stays small.
+// Most visitors never click /contact or hit a 404; they shouldn't pay for them.
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 // Scroll to top on navigation; respect #anchor links for in-page sections.
 function ScrollToTop() {
@@ -53,7 +53,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Real 404 — emits <meta name="robots" content="noindex">
+                instead of silently redirecting to /. Keeps the crawl clean
+                and stops Google from flagging duplicate content. */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "../components/SEO";
 import Container from "../components/ui/Container";
@@ -73,33 +73,58 @@ export default function ContactPage() {
     }
   };
 
+  // BreadcrumbList + ContactPage in a single @graph. Breadcrumb markup lets
+  // Google show the path "geargrid.live > Contact" instead of a raw URL in
+  // the SERP. Items MUST match the visible breadcrumb UI below — Google
+  // compares them and demotes mismatches.
   const contactJsonLd = {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact GearGrid",
-    description:
-      "Talk to the GearGrid team — request a demo, ask about pricing, or get technical support.",
-    url: "https://geargrid.live/contact",
-    mainEntity: {
-      "@type": "Organization",
-      name: "GearGrid",
-      contactPoint: [
-        {
-          "@type": "ContactPoint",
-          contactType: "sales",
-          email: "contact@geargrid.live",
-          telephone: "+94-11-234-5678",
-          areaServed: "LK",
-          availableLanguage: ["English", "Sinhala"],
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://geargrid.live/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact",
+            item: "https://geargrid.live/contact",
+          },
+        ],
+      },
+      {
+        "@type": "ContactPage",
+        name: "Contact GearGrid",
+        description:
+          "Talk to the GearGrid team — request a demo, ask about pricing, or get technical support.",
+        url: "https://geargrid.live/contact",
+        mainEntity: {
+          "@type": "Organization",
+          name: "GearGrid",
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "sales",
+              email: "contact@geargrid.live",
+              telephone: "+94-11-234-5678",
+              areaServed: "LK",
+              availableLanguage: ["English", "Sinhala"],
+            },
+            {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              email: "contact@geargrid.live",
+              areaServed: "LK",
+            },
+          ],
         },
-        {
-          "@type": "ContactPoint",
-          contactType: "customer support",
-          email: "contact@geargrid.live",
-          areaServed: "LK",
-        },
-      ],
-    },
+      },
+    ],
   };
 
   return (
@@ -118,6 +143,23 @@ export default function ContactPage() {
 
       <section className="pt-32 pb-24 sm:pt-40 sm:pb-32">
         <Container>
+          {/* Visible breadcrumb — must match the BreadcrumbList JSON-LD above. */}
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex items-center gap-2 text-sm text-slate-500">
+              <li>
+                <Link to="/" className="hover:text-slate-900">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden className="text-slate-300">
+                /
+              </li>
+              <li aria-current="page" className="font-medium text-slate-900">
+                Contact
+              </li>
+            </ol>
+          </nav>
+
           <div className="grid gap-16 lg:grid-cols-12">
             {/* Left: intro + contact info */}
             <motion.div

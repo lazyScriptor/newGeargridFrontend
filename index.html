@@ -9,9 +9,13 @@
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- Favicons -->
+    <!-- Favicons + PWA manifest -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="GearGrid" />
 
     <!-- Primary meta (overridden per-route by React 19 hoisting at runtime,
          but these are what non-JS crawlers, Slack/Discord/Facebook unfurlers,
@@ -43,7 +47,7 @@
       property="og:description"
       content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
     />
-    <meta property="og:image" content="https://geargrid.live/og-image.svg" />
+    <meta property="og:image" content="https://geargrid.live/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -61,7 +65,7 @@
       name="twitter:description"
       content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
     />
-    <meta name="twitter:image" content="https://geargrid.live/og-image.svg" />
+    <meta name="twitter:image" content="https://geargrid.live/og-image.png" />
 
     <!-- Preconnect to backend so the contact form POST is faster -->
     <link rel="preconnect" href="https://geargrid.live/api" crossorigin />
@@ -79,7 +83,7 @@
             "@id": "https://geargrid.live/#org",
             "name": "GearGrid",
             "url": "https://geargrid.live/",
-            "logo": "https://geargrid.live/og-image.svg",
+            "logo": "https://geargrid.live/og-image.png",
             "sameAs": ["https://app.geargrid.live"],
             "contactPoint": {
               "@type": "ContactPoint",

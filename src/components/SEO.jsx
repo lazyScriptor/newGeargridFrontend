@@ -13,7 +13,10 @@ export default function SEO({
   description,
   path = "/",
   // Override only if a route has a specific social-share image.
-  image = "/og-image.svg",
+  // Prefer PNG — some crawlers (notably Facebook + some link-preview services)
+  // don't render SVG OG images reliably. The PNG is build-time generated from
+  // the SVG via `sips` (see README / build script).
+  image = "/og-image.png",
   type = "website",
   // Pass a JSON-serialisable object to inject a JSON-LD script for this page.
   // It will be hoisted by React 19 like other head tags.
