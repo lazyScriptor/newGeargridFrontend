@@ -8,6 +8,11 @@ import LandingPage from "./pages/LandingPage";
 // Most visitors never click /contact or hit a 404; they shouldn't pay for them.
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const RentalManagementSoftwarePage = lazy(() =>
+  import("./pages/RentalManagementSoftwarePage"),
+);
+const FeaturesPage = lazy(() => import("./pages/FeaturesPage"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
 
 // Scroll to top on navigation; respect #anchor links for in-page sections.
 function ScrollToTop() {
@@ -52,6 +57,12 @@ export default function App() {
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/rental-management-software"
+              element={<RentalManagementSoftwarePage />}
+            />
+            <Route path="/features" element={<FeaturesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* Real 404 — emits <meta name="robots" content="noindex">
                 instead of silently redirecting to /. Keeps the crawl clean

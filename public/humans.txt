@@ -1,0 +1,13 @@
+/* TEAM */
+
+  Company: GearGrid Technologies
+  Site: https://geargrid.live/
+  Contact: contact@geargrid.live
+  Location: Colombo, Sri Lanka
+
+/* SITE */
+
+  Last update: 2026/05/19
+  Standards: HTML5, CSS3, ECMAScript 2024
+  Components: React 19, Vite, Tailwind CSS, Framer Motion
+  Software: Vite, Node.js, MySQL, nginx

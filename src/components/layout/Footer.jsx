@@ -7,9 +7,10 @@ const COLUMNS = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "/#features" },
+      { label: "Rental management software", to: "/rental-management-software" },
+      { label: "Features", to: "/features" },
+      { label: "Pricing", to: "/pricing" },
       { label: "Modules", href: "/#modules" },
-      { label: "Pricing", href: "/#pricing" },
       { label: "Security", href: "/#security" },
     ],
   },

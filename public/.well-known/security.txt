@@ -1,0 +1,9 @@
+# GearGrid Security Disclosure Policy
+# https://geargrid.live/.well-known/security.txt
+
+Contact: mailto:security@geargrid.live
+Contact: mailto:contact@geargrid.live
+Expires: 2027-05-19T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://geargrid.live/.well-known/security.txt
+Policy: https://geargrid.live/contact
