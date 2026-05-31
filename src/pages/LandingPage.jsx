@@ -1,5 +1,6 @@
 import SEO from "../components/SEO";
 import Hero from "../components/sections/Hero";
+import VideoShowcase from "../components/sections/VideoShowcase";
 import Features from "../components/sections/Features";
 import Modules from "../components/sections/Modules";
 import WhyGearGrid from "../components/sections/WhyGearGrid";
@@ -108,6 +109,7 @@ export default function LandingPage() {
       />
       <main>
         <Hero />
+        <VideoShowcase />
         <Features />
         <Modules />
         <WhyGearGrid />

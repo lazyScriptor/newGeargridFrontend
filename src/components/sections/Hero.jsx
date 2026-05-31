@@ -90,8 +90,31 @@ export default function Hero() {
               Launch console
               <IconArrowRight size={18} />
             </Button>
-            <Button as="Link" to="/contact" variant="secondary" size="lg">
-              Talk to sales
+            <Button
+              as="a"
+              href="#demo-video"
+              variant="secondary"
+              size="lg"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("demo-video")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              {/* Play glyph keeps the affordance unmistakable */}
+              <svg
+                className="text-amber-500"
+                width={18}
+                height={18}
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Watch demo
+              <span className="ml-1 text-xs font-medium text-slate-400">· Sinhala</span>
             </Button>
           </motion.div>
 
