@@ -69,17 +69,16 @@ export default function VideoShowcase() {
 
           <motion.h2
             variants={fadeUp}
-            className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl"
+            className="mt-6 text-balance text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl"
           >
-            See GearGrid in motion.
+            See how easy rental dispatch really is.
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="mx-auto mt-4 max-w-2xl text-balance text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            A short Sinhala walkthrough covering equipment, customers, invoices,
-            and the live dashboard — the same workflows your team will use on
-            day one.
+            A quick 3-minute video showing how counter staff book equipment, secure customer collateral,
+            and generate a rental bill in real time. Full English screen UI with step-by-step Sinhala narration.
           </motion.p>
         </motion.div>
 

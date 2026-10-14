@@ -7,52 +7,52 @@ import {
   IconWrench,
   IconChart,
   IconShield,
-  IconLayers,
+  IconGlobe,
 } from "../../icons/Icons";
 import { fadeUp, stagger } from "../../lib/motion";
 
 const FEATURES = [
   {
     icon: IconBox,
-    title: "Inventory you can trust",
-    desc: "Every unit has a serial, a story, and a location. Bulk imports, categories, depreciation — all live.",
-    color: "from-amber-400 to-orange-500",
-  },
-  {
-    icon: IconReceipt,
-    title: "Rentals from quote to return",
-    desc: "Daily / weekly / monthly pricing, transport fees, partial returns, late fees — automated.",
-    color: "from-blue-400 to-indigo-500",
-  },
-  {
-    icon: IconWrench,
-    title: "Maintenance command center",
-    desc: "Log defects on return, assign technicians, track repairs partial → fully resolved.",
-    color: "from-rose-400 to-fuchsia-500",
-  },
-  {
-    icon: IconChart,
-    title: "Accounting that just works",
-    desc: "Live AR, payment tracking, expense ledger, exportable financials. No spreadsheets.",
-    color: "from-emerald-400 to-teal-500",
+    title: "Never double-book gear",
+    desc: "See live availability across cameras, lenses, tools, and audio sets in real time. Never promise equipment that's already out or booked.",
+    color: "from-amber-500 to-orange-600",
   },
   {
     icon: IconShield,
-    title: "Multi-tenant isolation",
-    desc: "Each business gets its own database. Your data never touches another tenant's. Period.",
-    color: "from-slate-700 to-slate-900",
+    title: "ID Card Security Vault",
+    desc: "Record customer NIC / Passport numbers, hold collateral securely in your safe, and prevent expensive equipment from walking out untracked.",
+    color: "from-blue-500 to-indigo-600",
   },
   {
-    icon: IconLayers,
-    title: "Permissions you control",
-    desc: "Roles, hierarchies, and per-user overrides. Admin / Manager / Technician + your custom roles.",
-    color: "from-violet-400 to-purple-500",
+    icon: IconReceipt,
+    title: "Automated late fee billing",
+    desc: "Returns that come in 2 hours or 2 days late get calculated automatically on the invoice. Stop awkward disputes and collect what you're owed.",
+    color: "from-emerald-500 to-teal-600",
+  },
+  {
+    icon: IconWrench,
+    title: "Counter inspection & repairs",
+    desc: "Inspect gear on return. Flag damages, charge repair deductions, and route broken units straight to the workshop queue so clients never get faulty gear.",
+    color: "from-rose-500 to-red-600",
+  },
+  {
+    icon: IconChart,
+    title: "30-second checkout & WhatsApp",
+    desc: "Pick equipment, add delivery or discount, collect advance payments, and send professional WhatsApp / PDF receipts in seconds.",
+    color: "from-violet-500 to-purple-600",
+  },
+  {
+    icon: IconGlobe,
+    title: "Live control on phone & PC",
+    desc: "Whether you're at the shop counter or traveling, check today's collections, dispatched equipment, and pending returns from any smartphone.",
+    color: "from-slate-700 to-slate-900",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-24 sm:py-32">
+    <section id="features" className="relative py-20 sm:py-28 bg-slate-50/50">
       <Container>
         <motion.div
           initial="hidden"
@@ -62,21 +62,21 @@ export default function Features() {
           className="mx-auto max-w-2xl text-center"
         >
           <motion.div variants={fadeUp}>
-            <SectionLabel>Platform overview</SectionLabel>
+            <SectionLabel>Built for Daily Operations</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl"
+            className="text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl"
           >
-            Everything a rental business needs.{" "}
-            <span className="text-slate-400">Nothing it doesn't.</span>
+            Built for the everyday chaos of{" "}
+            <span className="text-amber-600">equipment rentals.</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-5 text-balance text-lg text-slate-600"
+            className="mt-4 text-balance text-base text-slate-600 sm:text-lg"
           >
-            Six pillars, one platform. Built specifically for the way equipment
-            rental companies operate.
+            No bloated corporate software. No confusing technical setups. Just the practical tools
+            rental business owners need to run a profitable shop.
           </motion.p>
         </motion.div>
 
@@ -85,28 +85,28 @@ export default function Features() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={stagger(0.06)}
-          className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {FEATURES.map((f) => (
             <motion.div
               key={f.title}
               variants={fadeUp}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_30px_60px_-30px_rgba(15,23,42,0.25)]"
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-lg"
             >
               <div
-                className={`mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ${f.color} text-white shadow-lg`}
+                className={`mb-5 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ${f.color} text-white shadow-md`}
               >
                 <f.icon size={22} />
               </div>
-              <h3 className="text-xl font-semibold tracking-tight text-slate-900">
+              <h3 className="text-lg font-bold tracking-tight text-slate-900">
                 {f.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 {f.desc}
               </p>
               <div
                 aria-hidden
-                className={`pointer-events-none absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-gradient-to-br ${f.color} opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20`}
+                className={`pointer-events-none absolute -bottom-12 -right-12 h-36 w-36 rounded-full bg-gradient-to-br ${f.color} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-15`}
               />
             </motion.div>
           ))}

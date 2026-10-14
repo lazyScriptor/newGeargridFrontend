@@ -9,7 +9,9 @@ import { URLS } from "../../lib/urls";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
-  { label: "Modules", href: "#modules" },
+  { label: "Workflows", href: "#modules" },
+  { label: "Video Demo", href: "#demo-video" },
+  { label: "Reviews", href: "#reviews" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", to: "/contact" },
 ];

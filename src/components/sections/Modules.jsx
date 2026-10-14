@@ -1,199 +1,289 @@
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import SectionLabel from "../ui/SectionLabel";
-import { IconCheck } from "../../icons/Icons";
+import { IconCheck, IconShield, IconReceipt, IconWrench, IconBox } from "../../icons/Icons";
 import { fadeUp, stagger, ease } from "../../lib/motion";
 
 const MODULES = [
   {
-    eyebrow: "Inventory",
-    title: "Track every unit with surgical precision.",
-    desc: "Each piece of equipment has a serial number, category, location, and lifecycle. Bulk-import via CSV, manage thousands of SKUs, set per-unit pricing, and see availability across every warehouse in real time.",
+    eyebrow: "Inventory & Real-Time Availability",
+    title: "Know what's on the shelf and what's out on rent.",
+    desc: "Track every camera body, lens, generator, light, and power tool by serial number and location. Set daily, weekend, or weekly rates. Before accepting a new booking, know with 100% certainty if the gear is available.",
     bullets: [
-      "Multi-warehouse stock with location-aware availability",
-      "CSV bulk import + bulk edit",
-      "Categories, sub-types, and per-unit pricing rules",
-      "Photo & document attachments per unit",
+      "Live calendar availability — prevent costly double-bookings",
+      "Serial number and barcode tracking per equipment unit",
+      "Daily, weekend, and weekly rental rate calculations",
+      "Instant status badges: Available, On Rent, Reserved, In Workshop",
     ],
     visual: "inventory",
   },
   {
-    eyebrow: "Rentals & Invoicing",
-    title: "Quote, deliver, return, invoice — without a spreadsheet.",
-    desc: "Daily, weekly, and monthly billing periods. Auto-pricing, transport fees, discounts, partial returns, and late-fee automation. Every action emits an audit trail; reverse a step in one click.",
+    eyebrow: "Fast Counter Checkout & POS",
+    title: "Generate professional rental invoices in 30 seconds.",
+    desc: "Built for busy shop counters. Select customer, add gear, apply transport fees or discounts, collect cash or bank advances, and print clean thermal or A4 bills. Send pre-formatted invoice summaries directly to customer WhatsApp.",
     bullets: [
-      "Daily / weekly / monthly billing with auto-renewal logic",
-      "Partial returns with live inventory updates",
-      "Per-line discount and per-invoice transport fee",
-      "Customer collateral (ID retention) workflow",
+      "30-second checkout flow designed for counter staff",
+      "Record advance deposits and live remaining balance due",
+      "1-Click share bill to customer WhatsApp or email PDF",
+      "Print thermal receipts or standard A4 / Letter invoices",
     ],
     visual: "invoice",
     reverse: true,
   },
   {
-    eyebrow: "Maintenance",
-    title: "Workshop ops, not Post-its.",
-    desc: "Defects are logged automatically on return. Triage in the queue, assign to a technician, log partial or full repairs. Equipment status updates everywhere instantly — no double-entry.",
+    eyebrow: "Security Vault & Automated Late Fees",
+    title: "Stop losing gear and stop arguing over late returns.",
+    desc: "Hold customer NIC cards or security deposits safely in your vault until gear is returned intact. If a client returns 2 hours or 2 days late, GearGrid calculates exact late penalty fees automatically on the final settlement.",
     bullets: [
-      "Defect queue with status: Pending → In Repair → Resolved",
-      "Technician assignment + partial-repair logging",
-      "Auto-decrements rentable inventory while in workshop",
-      "Repair cost & duration analytics",
+      "Customer NIC / Passport verification and collateral safe-hold",
+      "Automatic hourly and daily late fee calculation",
+      "Return inspection checklist to verify accessories and cables",
+      "Partial returns: restock returned items while keeping the rest on rent",
     ],
-    visual: "maintenance",
+    visual: "security_returns",
   },
   {
-    eyebrow: "Accounting & Reports",
-    title: "Live financial picture, always.",
-    desc: "Accounts receivable per customer, payment tracking, expense ledger, exportable P&L, and customer ledgers. Built for accountants and operators alike.",
+    eyebrow: "Workshop Repairs & Defect Triage",
+    title: "Catch broken gear at return, not before the next booking.",
+    desc: "When equipment is returned damaged, log the defect at the counter, charge the repair deduction to the customer, and immediately route the unit to the workshop queue. Damaged units are locked so nobody rents them by mistake.",
     bullets: [
-      "Live AR with overdue flags",
-      "Multi-method payment recording (cash, card, transfer)",
-      "Expense categories with attachments",
-      "PDF + Excel exports of every report",
+      "Defect logging upon return with customer responsibility record",
+      "Workshop queue: Pending Inspection → In Repair → Restocked",
+      "Assign internal technicians or track external repair vendor costs",
+      "Historical repair log per serial number to track equipment ROI",
     ],
-    visual: "chart",
+    visual: "maintenance",
     reverse: true,
   },
 ];
 
-// ── Visual primitives (lightweight SVG/HTML mockups) ─────────────────────────
+// ── Realistic Visual Primitives ──────────────────────────────────────────────
 const Visual = ({ kind }) => {
   switch (kind) {
     case "inventory":
       return (
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.3)]">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="text-sm font-semibold text-slate-900">Equipment</div>
-            <div className="inline-flex h-7 items-center gap-1.5 rounded-full bg-emerald-50 px-3 text-xs font-medium text-emerald-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Live
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
+          <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Live Inventory Status
+              </div>
+              <div className="text-base font-bold text-slate-900 mt-0.5">
+                Main Equipment Stockroom
+              </div>
+            </div>
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              Live Available
             </div>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {[
-              { name: "Concrete Mixer 350L", code: "CM-350-A12", stock: 24, color: "amber" },
-              { name: "Scaffolding Frame 6ft", code: "SC-6F-220", stock: 184, color: "blue" },
-              { name: "Generator 5KVA Diesel", code: "GEN-5K-D08", stock: 7, color: "rose" },
-              { name: "Compactor Plate 90kg", code: "CP-90-A03", stock: 12, color: "emerald" },
+              { name: "Sony FX3 Cinema Camera Kit", serial: "SN-8401-FX3", rate: "Rs. 18,500/d", status: "ON RENT", badge: "bg-amber-100 text-amber-800" },
+              { name: "Sony 24-70mm f/2.8 GM II", serial: "SN-3192-GM2", rate: "Rs. 4,500/d", status: "ON RENT", badge: "bg-amber-100 text-amber-800" },
+              { name: "Aputure 300d II Video Light", serial: "SN-1049-APT", rate: "Rs. 3,800/d", status: "AVAILABLE", badge: "bg-emerald-100 text-emerald-800" },
+              { name: "DJI RS3 Pro Gimbal Combo", serial: "SN-0922-GMB", rate: "Rs. 5,000/d", status: "AVAILABLE", badge: "bg-emerald-100 text-emerald-800" },
+              { name: "Sennheiser EW-112P G4 Wireless", serial: "SN-5521-MIC", rate: "Rs. 2,500/d", status: "IN WORKSHOP", badge: "bg-rose-100 text-rose-800" },
             ].map((r) => (
               <div
-                key={r.code}
-                className="grid grid-cols-12 items-center gap-3 rounded-lg border border-slate-100 bg-slate-50/40 px-3 py-2.5 text-sm"
+                key={r.serial}
+                className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50/70 p-3 text-xs"
               >
-                <div className={`col-span-1 h-2 w-2 rounded-full bg-${r.color}-400`} />
-                <div className="col-span-6 truncate font-medium text-slate-900">{r.name}</div>
-                <div className="col-span-3 font-mono text-xs text-slate-500">{r.code}</div>
-                <div className="col-span-2 text-right font-mono text-xs font-semibold text-slate-900">
-                  {r.stock}
+                <div>
+                  <div className="font-semibold text-slate-900">{r.name}</div>
+                  <div className="flex items-center gap-2 mt-0.5 text-slate-500 text-[11px]">
+                    <span className="font-mono text-slate-400">{r.serial}</span>
+                    <span>·</span>
+                    <span className="font-medium text-slate-700">{r.rate}</span>
+                  </div>
+                </div>
+                <div className={`rounded-md px-2 py-0.5 text-[10px] font-bold ${r.badge}`}>
+                  {r.status}
                 </div>
               </div>
             ))}
           </div>
         </div>
       );
+
     case "invoice":
       return (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.3)]">
-          <div className="mb-4 flex items-start justify-between">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
+          <div className="flex items-start justify-between border-b border-slate-100 pb-3">
             <div>
-              <div className="text-xs font-medium uppercase tracking-wider text-slate-500">
-                Invoice
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                Counter Point-of-Sale
               </div>
-              <div className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
-                INV-2042
+              <div className="text-base font-bold text-slate-900 mt-0.5">
+                Invoice #INV-2026-092
               </div>
+              <div className="text-xs text-slate-500">Customer: Ruwan Jayasinghe · Colombo 05</div>
             </div>
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-              PAID
+            <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+              DISPATCHED
             </span>
           </div>
-          <div className="space-y-2 border-t border-slate-100 pt-4 text-sm">
-            <div className="flex justify-between">
-              <span className="text-slate-600">Scaffolding × 12 (7 days)</span>
-              <span className="font-mono text-slate-900">Rs 42,000</span>
+
+          <div className="mt-4 space-y-2 text-xs">
+            <div className="flex justify-between py-1.5 border-b border-slate-50">
+              <span className="font-medium text-slate-800">Sony A7 IV Kit (2 Days)</span>
+              <span className="font-mono font-semibold text-slate-900">Rs. 16,000</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-slate-600">Generator 5KVA × 1</span>
-              <span className="font-mono text-slate-900">Rs 8,500</span>
+            <div className="flex justify-between py-1.5 border-b border-slate-50">
+              <span className="font-medium text-slate-800">Tamron 28-75mm f/2.8 G2</span>
+              <span className="font-mono font-semibold text-slate-900">Rs. 5,000</span>
             </div>
-            <div className="flex justify-between text-xs text-slate-500">
-              <span>Transport</span>
-              <span className="font-mono">Rs 1,500</span>
+            <div className="flex justify-between py-1.5 border-b border-slate-50">
+              <span className="font-medium text-slate-800">Godox AD200 Pro Strobe</span>
+              <span className="font-mono font-semibold text-slate-900">Rs. 3,500</span>
             </div>
-            <div className="flex justify-between text-xs text-rose-600">
-              <span>Discount</span>
-              <span className="font-mono">- Rs 2,000</span>
+            <div className="flex justify-between py-1 text-slate-500 text-[11px]">
+              <span>Delivery Transport</span>
+              <span className="font-mono">+ Rs. 1,500</span>
             </div>
-            <div className="mt-3 flex justify-between border-t border-slate-100 pt-3 text-base font-semibold">
-              <span className="text-slate-900">Total</span>
-              <span className="font-mono text-slate-900">Rs 50,000</span>
+          </div>
+
+          <div className="mt-4 rounded-xl bg-slate-900 p-3.5 text-white">
+            <div className="flex justify-between text-xs text-slate-400">
+              <span>Advance Paid (Cash):</span>
+              <span className="font-mono font-bold text-emerald-400">Rs. 15,000</span>
+            </div>
+            <div className="mt-2 pt-2 border-t border-slate-800 flex justify-between items-baseline">
+              <span className="text-xs font-bold text-slate-200">Balance Due on Return:</span>
+              <span className="font-mono text-base font-extrabold text-amber-400">Rs. 11,000</span>
+            </div>
+          </div>
+
+          <div className="mt-4 flex gap-2">
+            <div className="flex-1 rounded-lg bg-emerald-600 p-2 text-center text-xs font-bold text-white">
+              📱 Send WhatsApp Bill
+            </div>
+            <div className="rounded-lg border border-slate-300 p-2 text-center text-xs font-semibold text-slate-700">
+              🖨️ Print Receipt
             </div>
           </div>
         </div>
       );
-    case "maintenance":
+
+    case "security_returns":
       return (
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.3)]">
-          <div className="mb-4 flex items-center gap-2 text-sm">
-            <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-              Queue (4)
-            </span>
-            <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
-              In Workshop (7)
-            </span>
-            <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
-              Done (132)
-            </span>
-          </div>
-          {[
-            { item: "Generator 5KVA #G08", defect: "Starter motor", tech: "K. Perera", progress: 60 },
-            { item: "Mixer #CM12", defect: "Drum bearing", tech: "S. Silva", progress: 30 },
-            { item: "Compactor #CP03", defect: "Belt tension", tech: "Unassigned", progress: 0 },
-          ].map((d) => (
-            <div key={d.item} className="border-t border-slate-100 py-3">
-              <div className="flex items-center justify-between text-sm">
-                <div className="font-medium text-slate-900">{d.item}</div>
-                <div className="text-xs text-slate-500">{d.tech}</div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
+          <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Return Inspection & Vault
               </div>
-              <div className="mt-1.5 text-xs text-rose-600">{d.defect}</div>
-              <div className="mt-2 h-1.5 w-full rounded-full bg-slate-100">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-500"
-                  style={{ width: `${d.progress}%` }}
-                />
+              <div className="text-base font-bold text-slate-900 mt-0.5">
+                Customer Check-In
               </div>
             </div>
-          ))}
-        </div>
-      );
-    case "chart":
-    default:
-      return (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.3)]">
-          <div className="flex items-end justify-between gap-1.5 h-44">
-            {[55, 72, 64, 80, 68, 88, 76, 95, 82, 90, 78, 100].map((h, i) => (
-              <div key={i} className="flex-1 h-full flex items-end">
-                <div
-                  className="w-full rounded-t-md bg-gradient-to-t from-emerald-500 to-emerald-300"
-                  style={{ height: `${h}%` }}
-                />
+            <div className="flex items-center gap-1.5 rounded-lg bg-amber-50 border border-amber-300 px-2.5 py-1 text-xs font-bold text-amber-900">
+              <IconShield size={14} className="text-amber-600" />
+              NIC Locked in Safe
+            </div>
+          </div>
+
+          {/* Late fee card */}
+          <div className="rounded-xl border border-rose-200 bg-rose-50/70 p-3.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-rose-800">Delayed Return Detected</span>
+              <span className="rounded bg-rose-200/80 px-2 py-0.5 text-[10px] font-mono font-bold text-rose-900">
+                +4 Hours Late
+              </span>
+            </div>
+            <div className="mt-2 text-xs text-rose-700">
+              Auto-calculated overtime penalty applied to invoice ledger:
+            </div>
+            <div className="mt-1 text-sm font-bold font-mono text-rose-900">
+              + Rs. 3,500 Late Fee Added
+            </div>
+          </div>
+
+          {/* Checklist */}
+          <div className="mt-4 space-y-2">
+            <div className="text-xs font-bold text-slate-700">Return Condition Checklist:</div>
+            {[
+              { item: "Lens front & rear glass clean", ok: true },
+              { item: "Both battery chargers returned", ok: true },
+              { item: "SD Cards and cables accounted for", ok: true },
+            ].map((c) => (
+              <div key={c.item} className="flex items-center gap-2 text-xs text-slate-600">
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                  <IconCheck size={12} />
+                </span>
+                {c.item}
               </div>
             ))}
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-4 border-t border-slate-100 pt-4 text-center">
+
+          <div className="mt-5 rounded-lg bg-slate-900 p-2.5 text-center text-xs font-bold text-white">
+            Unlock & Return Customer NIC Card
+          </div>
+        </div>
+      );
+
+    case "maintenance":
+    default:
+      return (
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6">
+          <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
             <div>
-              <div className="text-xs uppercase tracking-wider text-slate-500">AR</div>
-              <div className="text-xl font-semibold text-slate-900">Rs 1.2M</div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Workshop & Defect Queue
+              </div>
+              <div className="text-base font-bold text-slate-900 mt-0.5">
+                Repair Management
+              </div>
             </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-slate-500">MTD</div>
-              <div className="text-xl font-semibold text-slate-900">Rs 4.2M</div>
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-slate-500">Margin</div>
-              <div className="text-xl font-semibold text-emerald-600">38%</div>
-            </div>
+            <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-bold text-amber-800">
+              3 Units in Repair
+            </span>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                unit: "Godox SL-150W II Video Light",
+                serial: "GDX-044-LGT",
+                defect: "Cooling fan noise / overheating",
+                tech: "Technician: Sunimal",
+                cost: "Est: Rs. 4,500",
+                badge: "In Repair",
+                badgeColor: "bg-blue-100 text-blue-800",
+              },
+              {
+                unit: "Sony 70-200mm f/2.8 GM Lens",
+                serial: "SN-9102-LNS",
+                defect: "Focus ring stiff after outdoor shoot",
+                tech: "Vendor: TechZone Service",
+                cost: "Charged to Client INV-079",
+                badge: "Pending Parts",
+                badgeColor: "bg-amber-100 text-amber-800",
+              },
+              {
+                unit: "Yamaha StagePas 600BT PA System",
+                serial: "PA-600-YM",
+                defect: "Channel 3 XLR loose contact",
+                tech: "Technician: Sunimal",
+                cost: "Repaired & Tested",
+                badge: "Ready to Restock",
+                badgeColor: "bg-emerald-100 text-emerald-800",
+              },
+            ].map((d) => (
+              <div key={d.serial} className="rounded-xl border border-slate-100 bg-slate-50/70 p-3 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-slate-900">{d.unit}</span>
+                  <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${d.badgeColor}`}>
+                    {d.badge}
+                  </span>
+                </div>
+                <div className="mt-1 text-rose-600 font-medium text-[11px]">{d.defect}</div>
+                <div className="mt-2 flex items-center justify-between text-slate-500 text-[11px] pt-1.5 border-t border-slate-200/60">
+                  <span>{d.tech}</span>
+                  <span className="font-mono font-semibold text-slate-700">{d.cost}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       );
@@ -202,7 +292,7 @@ const Visual = ({ kind }) => {
 
 export default function Modules() {
   return (
-    <section id="modules" className="relative bg-slate-50/50 py-24 sm:py-32">
+    <section id="modules" className="relative bg-white py-20 sm:py-28">
       <Container>
         <motion.div
           initial="hidden"
@@ -212,18 +302,24 @@ export default function Modules() {
           className="mx-auto max-w-2xl text-center"
         >
           <motion.div variants={fadeUp}>
-            <SectionLabel>Deep dives</SectionLabel>
+            <SectionLabel>Core Daily Workflows</SectionLabel>
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl"
+            className="text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl"
           >
-            Four modules.{" "}
-            <span className="text-slate-400">One source of truth.</span>
+            How GearGrid manages your shop{" "}
+            <span className="text-amber-600">from morning to night.</span>
           </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-balance text-base text-slate-600 sm:text-lg"
+          >
+            Designed specifically for camera rentals, wedding equipment, tools, and AV production houses.
+          </motion.p>
         </motion.div>
 
-        <div className="mt-20 space-y-28 sm:space-y-32">
+        <div className="mt-16 space-y-20 sm:space-y-28">
           {MODULES.map((m) => (
             <motion.div
               key={m.title}
@@ -231,24 +327,26 @@ export default function Modules() {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={stagger(0.1)}
-              className="grid items-center gap-12 lg:grid-cols-12"
+              className="grid items-center gap-10 lg:grid-cols-12"
             >
-              {/* text */}
+              {/* Text */}
               <motion.div
                 variants={fadeUp}
                 className={`lg:col-span-5 ${m.reverse ? "lg:order-2 lg:col-start-8" : ""}`}
               >
-                <SectionLabel>{m.eyebrow}</SectionLabel>
-                <h3 className="text-balance text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
+                <div className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                  {m.eyebrow}
+                </div>
+                <h3 className="mt-2 text-balance text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">
                   {m.title}
                 </h3>
-                <p className="mt-5 text-lg leading-relaxed text-slate-600">
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {m.desc}
                 </p>
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-6 space-y-2.5">
                   {m.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-sm text-slate-700">
-                      <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-emerald-100 text-emerald-700">
+                    <li key={b} className="flex items-start gap-2.5 text-sm text-slate-700 font-medium">
+                      <span className="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
                         <IconCheck size={12} />
                       </span>
                       {b}
@@ -257,12 +355,12 @@ export default function Modules() {
                 </ul>
               </motion.div>
 
-              {/* visual */}
+              {/* Visual preview */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, ease }}
+                transition={{ duration: 0.7, ease }}
                 className={`lg:col-span-7 ${m.reverse ? "lg:order-1 lg:col-start-1" : ""}`}
               >
                 <Visual kind={m.visual} />

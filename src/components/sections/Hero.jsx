@@ -1,35 +1,31 @@
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
-import { IconArrowRight, IconSparkles, IconCheck } from "../../icons/Icons";
+import { IconArrowRight, IconSparkles, IconCheck, IconShield, IconReceipt } from "../../icons/Icons";
 import { URLS } from "../../lib/urls";
 import { ease, fadeUp, stagger } from "../../lib/motion";
 
-const HIGHLIGHTS = ["Inventory", "Rentals & Invoicing", "Maintenance", "Accounting"];
+const HIGHLIGHTS = [
+  "Zero Double-Booking",
+  "Fast 30-Sec Counter POS",
+  "ID Card Security Vault",
+  "Automated Late Fees",
+  "Works on Phone & PC",
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      {/* ambient gradients */}
+    <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
+      {/* ambient background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-x-0 top-0 h-[600px] bg-gradient-to-b from-amber-50/60 via-white to-transparent" />
-        <motion.div
-          aria-hidden
-          animate={{ rotate: 360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-          className="absolute left-1/2 top-[-200px] h-[900px] w-[900px] -translate-x-1/2 opacity-50"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(245,158,11,0.18), rgba(255,255,255,0) 60%)",
-          }}
-        />
+        <div className="absolute inset-x-0 top-0 h-[640px] bg-gradient-to-b from-amber-50/70 via-slate-50/40 to-white" />
         <div
           aria-hidden
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "radial-gradient(circle at 1px 1px, rgb(15 23 42) 1px, transparent 0)",
-            backgroundSize: "32px 32px",
+            backgroundSize: "28px 28px",
           }}
         />
       </div>
@@ -41,53 +37,51 @@ export default function Hero() {
           animate="visible"
           className="mx-auto max-w-4xl text-center"
         >
-          {/* eyebrow pill */}
+          {/* Eyebrow badge */}
           <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50/70 px-4 py-1.5 text-xs font-medium text-amber-900 backdrop-blur">
-              <IconSparkles size={14} />
-              The operating system for equipment rental businesses
+            <span className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50/90 px-4 py-1.5 text-xs font-semibold text-amber-900 shadow-sm backdrop-blur">
+              <IconSparkles size={14} className="text-amber-600" />
+              Equipment Rental & Inventory Management Software
             </span>
           </motion.div>
 
-          {/* headline */}
+          {/* Headline */}
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-balance text-5xl font-semibold leading-[1.04] tracking-tight text-slate-900 sm:text-6xl md:text-7xl"
+            className="mt-6 text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-slate-900 sm:text-6xl md:text-7xl"
           >
-            Run your{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-transparent">
-                rental fleet
+            Stop losing gear, revenue, and sleep.{" "}
+            <span className="relative inline-block mt-1 sm:mt-0">
+              <span className="relative z-10 bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
+                Rent with total control.
               </span>
               <motion.span
                 aria-hidden
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 1.2, delay: 0.6, ease }}
-                className="absolute -bottom-2 left-0 right-0 origin-left h-2 rounded-full bg-gradient-to-r from-amber-400/40 via-orange-400/40 to-rose-400/40 blur-sm"
+                transition={{ duration: 1.1, delay: 0.5, ease }}
+                className="absolute -bottom-1.5 left-0 right-0 origin-left h-2 rounded-full bg-amber-400/30 blur-[2px]"
               />
             </span>
-            <br />
-            like Apple runs a launch.
           </motion.h1>
 
-          {/* sub */}
+          {/* Subtitle */}
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-slate-600 sm:text-xl"
+            className="mx-auto mt-6 max-w-2xl text-balance text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            Inventory, contracts, returns, maintenance, and accounting — unified
-            on a single, secure, multi-tenant platform built for modern
-            equipment rental businesses.
+            The practical point-of-sale and inventory system built for camera, AV, party, and tool
+            rental operators. Prevent double-booking, lock customer ID security deposits, and print
+            instant invoices with automatic late fees — straight from your phone or PC.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
             variants={fadeUp}
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button as="a" href={URLS.login} variant="primary" size="lg" external>
-              Launch console
+              Try live console demo
               <IconArrowRight size={18} />
             </Button>
             <Button
@@ -102,9 +96,8 @@ export default function Hero() {
                   ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
             >
-              {/* Play glyph keeps the affordance unmistakable */}
               <svg
-                className="text-amber-500"
+                className="text-amber-600"
                 width={18}
                 height={18}
                 viewBox="0 0 24 24"
@@ -113,91 +106,204 @@ export default function Hero() {
               >
                 <path d="M8 5v14l11-7z" />
               </svg>
-              Watch demo
-              <span className="ml-1 text-xs font-medium text-slate-400">· Sinhala</span>
+              Watch video walkthrough
+              <span className="ml-1 text-xs font-semibold text-amber-700">· 3 min</span>
             </Button>
           </motion.div>
 
-          {/* mini trust list */}
+          {/* Highlights checklist */}
           <motion.ul
             variants={fadeUp}
-            className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-500"
+            className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600 sm:text-sm"
           >
             {HIGHLIGHTS.map((h) => (
               <li key={h} className="inline-flex items-center gap-1.5">
-                <IconCheck size={16} />
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                  <IconCheck size={12} />
+                </span>
                 {h}
               </li>
             ))}
           </motion.ul>
         </motion.div>
 
-        {/* product preview slab */}
+        {/* Realistic interactive dispatch console mockup */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5, ease }}
-          className="relative mx-auto mt-20 max-w-5xl"
+          transition={{ duration: 0.8, delay: 0.4, ease }}
+          className="relative mx-auto mt-14 max-w-5xl"
         >
-          <div className="absolute -inset-x-8 -inset-y-8 -z-10 rounded-[2.5rem] bg-gradient-to-br from-amber-200/40 via-orange-200/30 to-rose-200/40 blur-2xl" />
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_20px_70px_-30px_rgba(15,23,42,0.4)]">
-            {/* top bar mimicking macOS window */}
-            <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50/80 px-4 py-3">
-              <div className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-red-400" />
-                <span className="h-3 w-3 rounded-full bg-amber-400" />
-                <span className="h-3 w-3 rounded-full bg-emerald-400" />
-              </div>
-              <div className="text-xs font-medium text-slate-500">
-                app.geargrid.live / dashboard
-              </div>
-              <div className="w-12" />
-            </div>
+          {/* Subtle warm glow behind console */}
+          <div className="absolute -inset-x-4 -inset-y-4 -z-10 rounded-[2rem] bg-gradient-to-r from-amber-300/30 via-orange-300/20 to-amber-200/30 blur-2xl" />
 
-            {/* dashboard mockup */}
-            <div className="grid gap-4 p-6 sm:p-8 md:grid-cols-4">
-              {[
-                { label: "Active rentals", value: "342", trend: "+12%", color: "from-amber-400 to-orange-500" },
-                { label: "Revenue (MTD)", value: "Rs 4.2M", trend: "+8%", color: "from-emerald-400 to-teal-500" },
-                { label: "Available units", value: "1,284", trend: "—", color: "from-blue-400 to-indigo-500" },
-                { label: "In workshop", value: "27", trend: "-4%", color: "from-rose-400 to-fuchsia-500" },
-              ].map((k) => (
-                <div
-                  key={k.label}
-                  className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm"
-                >
-                  <div
-                    className={`mb-3 inline-block h-1 w-8 rounded-full bg-gradient-to-r ${k.color}`}
-                  />
-                  <div className="text-xs uppercase tracking-wider text-slate-500">
-                    {k.label}
-                  </div>
-                  <div className="mt-1 text-2xl font-semibold tracking-tight text-slate-900">
-                    {k.value}
-                  </div>
-                  <div className="mt-0.5 text-xs text-slate-400">{k.trend}</div>
+          <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-900 text-slate-100 shadow-[0_25px_70px_-20px_rgba(15,23,42,0.35)]">
+            {/* Top window header */}
+            <div className="flex flex-wrap items-center justify-between border-b border-slate-800 bg-slate-950/80 px-4 py-3 backdrop-blur">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+                  <span className="h-3 w-3 rounded-full bg-amber-500/80" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
                 </div>
-              ))}
+                <div className="ml-2 flex items-center gap-2 text-xs text-slate-400">
+                  <span className="font-semibold text-slate-200">GearGrid POS</span>
+                  <span className="text-slate-600">/</span>
+                  <span className="font-mono text-[11px] text-amber-400">INV-2026-084</span>
+                  <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300">
+                    DISPATCHED
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-2.5 py-1 text-[11px] font-medium text-slate-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Live Rental Counter
+                </span>
+              </div>
             </div>
 
-            {/* bottom chart placeholder */}
-            <div className="border-t border-slate-100 bg-gradient-to-b from-white to-slate-50/50 px-6 pb-6 pt-2 sm:px-8">
-              <div className="flex items-end justify-between gap-2 sm:gap-3">
-                {[42, 58, 36, 72, 51, 80, 64, 90, 68, 95, 78, 88].map((h, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scaleY: 0 }}
-                    animate={{ scaleY: 1 }}
-                    transition={{ duration: 0.9, delay: 0.9 + i * 0.05, ease }}
-                    className="origin-bottom flex-1 rounded-t bg-gradient-to-t from-slate-300 to-slate-200"
-                    style={{ height: `${h * 1.2}px` }}
-                  >
-                    <div
-                      className="h-full w-full rounded-t bg-gradient-to-t from-amber-400/80 to-orange-400/40"
-                      style={{ opacity: i > 8 ? 1 : 0.7 }}
-                    />
-                  </motion.div>
-                ))}
+            {/* Mockup console body */}
+            <div className="grid lg:grid-cols-12 bg-slate-900 text-slate-100">
+              {/* Left pane: Order items & client */}
+              <div className="p-5 sm:p-6 lg:col-span-7 border-b lg:border-b-0 lg:border-r border-slate-800 flex flex-col justify-between">
+                <div>
+                  {/* Customer row */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-800/60 p-3.5 border border-slate-700/60">
+                    <div>
+                      <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                        Customer & Verification
+                      </div>
+                      <div className="text-sm font-bold text-white mt-0.5">
+                        Kavinda Senanayake <span className="text-slate-400 font-normal">· +94 77 ••• 4190</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 text-xs font-semibold text-amber-300">
+                      <IconShield size={14} />
+                      NIC Vault: Secured
+                    </div>
+                  </div>
+
+                  {/* Rental equipment items table */}
+                  <div className="mt-4">
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                      Rented Equipment Items (2 Days)
+                    </div>
+                    <div className="space-y-2">
+                      {[
+                        {
+                          name: "Sony FX3 Full-Frame Cinema Kit",
+                          code: "SNY-FX3-04",
+                          rate: "Rs. 18,500 / day",
+                          total: "Rs. 37,000",
+                          badge: "Serial #8401",
+                        },
+                        {
+                          name: "Sony FE 24-70mm f/2.8 GM II Lens",
+                          code: "LNS-2470-02",
+                          rate: "Rs. 4,500 / day",
+                          total: "Rs. 9,000",
+                          badge: "Serial #3192",
+                        },
+                        {
+                          name: "DJI RS 3 Pro Gimbal Stabilizer Combo",
+                          code: "GMB-RS3P-01",
+                          rate: "Rs. 5,000 / day",
+                          total: "Rs. 10,000",
+                          badge: "Checked OK",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.code}
+                          className="flex items-center justify-between rounded-lg bg-slate-950/50 p-2.5 px-3 border border-slate-800/80 text-xs"
+                        >
+                          <div>
+                            <div className="font-semibold text-slate-200">{item.name}</div>
+                            <div className="flex items-center gap-2 mt-0.5 text-slate-400 text-[11px]">
+                              <span className="font-mono text-amber-400/90">{item.code}</span>
+                              <span>·</span>
+                              <span>{item.rate}</span>
+                              <span className="rounded bg-slate-800 px-1.5 py-0.2 text-[10px] text-slate-300">
+                                {item.badge}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-right font-mono font-bold text-slate-200">
+                            {item.total}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom schedule info */}
+                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                    <span>Dispatched: Friday 4:30 PM</span>
+                  </div>
+                  <div>
+                    Return Due: <span className="font-bold text-amber-400">Sunday 8:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right pane: Financial Terminal & Balance */}
+              <div className="p-5 sm:p-6 lg:col-span-5 bg-slate-950 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Payment Terminal
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 px-2 py-0.5 rounded">
+                      Advance Received
+                    </span>
+                  </div>
+
+                  {/* Financial breakdown */}
+                  <div className="mt-4 space-y-2 text-xs">
+                    <div className="flex justify-between text-slate-400">
+                      <span>Items Subtotal (3 items)</span>
+                      <span className="font-mono text-slate-200">Rs. 56,000</span>
+                    </div>
+                    <div className="flex justify-between text-slate-400">
+                      <span>Delivery / Transport</span>
+                      <span className="font-mono text-slate-200">+ Rs. 2,000</span>
+                    </div>
+                    <div className="flex justify-between text-slate-400">
+                      <span>Weekend Special Discount</span>
+                      <span className="font-mono text-rose-400">- Rs. 3,000</span>
+                    </div>
+                    <div className="border-t border-slate-800 pt-2 flex justify-between font-bold text-sm text-slate-100">
+                      <span>Grand Total</span>
+                      <span className="font-mono text-base text-amber-400">Rs. 55,000</span>
+                    </div>
+                  </div>
+
+                  {/* Advance card */}
+                  <div className="mt-5 rounded-xl bg-slate-900 p-3.5 border border-slate-800">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-400">Advance Paid (Cash/Transfer):</span>
+                      <span className="font-mono font-bold text-emerald-400">Rs. 25,000</span>
+                    </div>
+                    <div className="mt-2.5 pt-2.5 border-t border-slate-800/80 flex justify-between items-baseline">
+                      <span className="text-xs font-bold text-slate-300">Balance Due on Return:</span>
+                      <span className="text-lg font-extrabold font-mono text-white">Rs. 30,000</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Instant Actions */}
+                <div className="mt-6 pt-4 border-t border-slate-800 flex items-center gap-2">
+                  <div className="flex-1 rounded-lg bg-emerald-600 px-3 py-2 text-center text-xs font-bold text-white shadow hover:bg-emerald-500 cursor-pointer transition">
+                    ✓ Print & Send WhatsApp Invoice
+                  </div>
+                  <div className="rounded-lg bg-slate-800 border border-slate-700 px-3 py-2 text-center text-xs font-semibold text-slate-300 hover:bg-slate-700 cursor-pointer transition">
+                    View ID Card
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -206,3 +312,4 @@ export default function Hero() {
     </section>
   );
 }
+

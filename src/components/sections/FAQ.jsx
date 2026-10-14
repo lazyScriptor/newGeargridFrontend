@@ -9,20 +9,28 @@ import { fadeUp, stagger } from "../../lib/motion";
 // pages where the structured data doesn't match what users see.
 const FAQS = [
   {
-    q: "What is GearGrid?",
-    a: "GearGrid is a multi-tenant SaaS platform that unifies equipment inventory, rentals & invoicing, maintenance workflows, and accounting into a single secure console built for equipment rental businesses.",
+    q: "What kind of rental businesses is GearGrid built for?",
+    a: "GearGrid is purpose-built for equipment rental businesses — including cameras and cinema equipment, AV sound and lighting, party and wedding rentals, power tools, generators, and event gear.",
   },
   {
-    q: "Is my data isolated from other tenants?",
-    a: "Yes — each tenant runs on its own MySQL database. There are no shared tables and no cross-tenant queries by architecture, not by promise.",
+    q: "Can my non-technical counter staff learn to use it quickly?",
+    a: "Yes. The system is intentionally designed with zero technical barrier. If your staff can use WhatsApp or Facebook on a phone, they can comfortably search stock, create invoices, and check in returns within 15 minutes. Step-by-step video tutorials in Sinhala and English are provided.",
   },
   {
-    q: "Do I need separate tools for accounting and maintenance?",
-    a: "No. GearGrid includes maintenance (defect logging, technician assignment, repair tracking) and accounting (live AR, payment recording, expense ledger) as native modules — no integrations required.",
+    q: "How does the ID Card Security Vault protect my equipment?",
+    a: "When a customer rents high-value gear, counter staff record their National Identity Card (NIC) or Passport number and lock their collateral status in the system. The invoice tracks the held ID card until all equipment is returned and inspected at the counter.",
   },
   {
-    q: "How much does GearGrid cost?",
-    a: "Starter is LKR 4,900/month for a single warehouse, Pro is LKR 9,900/month for unlimited equipment and multi-warehouse support, and Enterprise is custom-priced with a dedicated DB cluster and SLAs.",
+    q: "What happens when a customer returns equipment late or damaged?",
+    a: "Overdue late fees are calculated automatically on the final bill based on your rates, preventing awkward counter disputes. If gear is damaged, staff log the defect right on the return record, charge the customer repair deduction, and automatically route the item to the workshop queue.",
+  },
+  {
+    q: "Can I monitor my shop from my mobile phone?",
+    a: "Yes. GearGrid is mobile-first and optimized for standard 4G smartphone connections. You can check today's collections, dispatched equipment, and overdue returns from anywhere in the world on your phone, tablet, or laptop.",
+  },
+  {
+    q: "Is my customer database and revenue confidential?",
+    a: "100% confidential. Your customer lists, rental pricing, and business revenue are securely isolated and automatically backed up daily in the cloud. No other business ever has access to your records.",
   },
 ];
 
