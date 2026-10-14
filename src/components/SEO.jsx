@@ -24,12 +24,16 @@ export default function SEO({
   noIndex = false,
 }) {
   const url = `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
+  const defaultTitle =
+    "GearGrid — Equipment Rental & Inventory Management Software";
   const fullTitle = title
-    ? `${title} — GearGrid`
-    : "GearGrid — The OS for equipment rental businesses";
+    ? title.includes("GearGrid")
+      ? title
+      : `GearGrid — ${title}`
+    : defaultTitle;
   const desc =
     description ||
-    "GearGrid is a multi-tenant rental platform that unifies inventory, contracts, maintenance, and accounting. Built for modern equipment rental businesses.";
+    "GearGrid is the leading equipment rental and inventory management software. Real-time availability, counter POS invoicing, ID card security vault, and automated billing.";
   const imageUrl = image.startsWith("http") ? image : `${SITE}${image}`;
 
   return (

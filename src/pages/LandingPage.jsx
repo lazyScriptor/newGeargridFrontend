@@ -19,11 +19,23 @@ const homeJsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://geargrid.live/#software",
       name: "GearGrid",
+      alternateName: [
+        "GearGrid",
+        "Gear Grid",
+        "GearGrid Live",
+        "geargrid.live",
+        "GearGrid Equipment Rental Software"
+      ],
       description:
         "Equipment rental management system — live inventory tracking, fast counter Point-of-Sale, customer ID security vault, automated late fees, and workshop repair management.",
       applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
+      applicationSubCategory: "Equipment Rental Management Software",
+      operatingSystem: "Web, iOS, Android, macOS, Windows",
       url: "https://geargrid.live/",
+      brand: {
+        "@type": "Brand",
+        "name": "GearGrid"
+      },
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "LKR",
@@ -42,7 +54,7 @@ const homeJsonLd = {
       "@id": "https://geargrid.live/#localbusiness",
       name: "GearGrid",
       url: "https://geargrid.live/",
-      image: "https://geargrid.live/og-image.svg",
+      image: "https://geargrid.live/og-image.png",
       priceRange: "LKR 4,900 – 9,900/month",
       telephone: "+94-77-772-2295",
       email: "contact@geargrid.live",

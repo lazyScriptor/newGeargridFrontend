@@ -7,46 +7,56 @@
 >
   <url>
     <loc>https://geargrid.live/</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://geargrid.live/og-image.png</image:loc>
-      <image:title>GearGrid — the OS for equipment rental businesses</image:title>
-      <image:caption>Inventory, contracts, maintenance, and accounting unified on a single secure multi-tenant platform.</image:caption>
+      <image:title>GearGrid — Equipment Rental &amp; Inventory Management Software</image:title>
+      <image:caption>Live inventory tracking, counter POS invoicing, ID card security vault, and automated late fees for equipment rental businesses.</image:caption>
     </image:image>
   </url>
 
   <url>
     <loc>https://geargrid.live/rental-management-software</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://geargrid.live/og-image.png</image:loc>
-      <image:title>Rental management software — GearGrid</image:title>
-      <image:caption>Cloud rental management software for equipment, machinery, and tool rental businesses.</image:caption>
+      <image:title>GearGrid — Rental Management Software</image:title>
+      <image:caption>Cloud rental management software for cameras, sound, power tools, and event equipment rental businesses.</image:caption>
     </image:image>
   </url>
 
   <url>
     <loc>https://geargrid.live/features</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://geargrid.live/og-image.png</image:loc>
+      <image:title>GearGrid Features — POS, Availability, ID Vault &amp; Maintenance</image:title>
+      <image:caption>Full breakdown of features built for modern equipment rental operators.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://geargrid.live/pricing</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://geargrid.live/og-image.png</image:loc>
+      <image:title>GearGrid Pricing — Affordable Plans for Rental Businesses</image:title>
+      <image:caption>Transparent pricing starting at LKR 4,900/month in Sri Lanka and $19/month internationally.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://geargrid.live/contact</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

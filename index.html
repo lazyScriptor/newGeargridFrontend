@@ -6,101 +6,168 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#f59e0b" />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- Favicons + PWA manifest -->
-    <link rel="icon" type="image/svg+xml" href="/gemini-svg.svg" />
-    <link rel="apple-touch-icon" href="/gemini-svg.svg" />
+    <!-- Google-Compliant Favicons + Standard Icons + PWA Manifest -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="GearGrid" />
+    <meta name="application-name" content="GearGrid" />
 
-    <!-- Primary meta (overridden per-route by React 19 hoisting at runtime,
-         but these are what non-JS crawlers, Slack/Discord/Facebook unfurlers,
-         and Google's first-pass crawler see before JS executes.) -->
-    <title>GearGrid — The OS for equipment rental businesses</title>
+    <!-- Primary SEO Metadata -->
+    <title>GearGrid — Equipment Rental &amp; Inventory Management Software</title>
     <meta
       name="description"
-      content="GearGrid unifies inventory, rentals &amp; invoicing, maintenance, and accounting into a single secure multi-tenant platform. Built for modern equipment rental operators."
+      content="GearGrid is the leading equipment rental and inventory management software. Real-time availability, fast counter POS invoicing, ID card security vault, automated late fees, and workshop maintenance tracking."
+    />
+    <meta
+      name="keywords"
+      content="GearGrid, gear grid, geargrid.live, equipment rental software, inventory management system, rental POS software, equipment rental Sri Lanka, camera rental software, tool rental system, event rental software, AV rental management, machinery rental system"
     />
     <meta
       name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <meta name="author" content="GearGrid" />
-    <meta name="application-name" content="GearGrid" />
     <link rel="canonical" href="https://geargrid.live/" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content="GearGrid" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://geargrid.live/" />
     <meta
       property="og:title"
-      content="GearGrid — The OS for equipment rental businesses"
+      content="GearGrid — Equipment Rental &amp; Inventory Management Software"
     />
     <meta
       property="og:description"
-      content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
+      content="Live inventory tracking, counter POS invoicing, ID card security vault, and automated billing built specifically for equipment rental businesses."
     />
     <meta property="og:image" content="https://geargrid.live/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="GearGrid — the OS for equipment rental businesses"
+      content="GearGrid — Equipment Rental &amp; Inventory Management Software"
     />
 
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="GearGrid — The OS for equipment rental businesses"
+      content="GearGrid — Equipment Rental &amp; Inventory Management Software"
     />
     <meta
       name="twitter:description"
-      content="Inventory, contracts, maintenance, and accounting — unified on a single secure multi-tenant platform."
+      content="Live inventory tracking, counter POS invoicing, ID card security vault, and automated billing built specifically for equipment rental businesses."
     />
     <meta name="twitter:image" content="https://geargrid.live/og-image.png" />
 
-    <!-- Preconnect to backend so the contact form POST is faster -->
-    <link rel="preconnect" href="https://geargrid.live/api" crossorigin />
+    <!-- Preconnect & DNS-Prefetch -->
+    <link rel="preconnect" href="https://geargrid.live" />
     <link rel="dns-prefetch" href="//app.geargrid.live" />
 
-    <!-- JSON-LD: Organization + WebSite. Inline (NOT React-rendered) so
-         non-JS crawlers always see it. Page-specific schemas come via React 19
-         metadata from <SEO> components. -->
+    <!-- Structured Data (JSON-LD) for Search Engines & Brand Entity Disambiguation -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "Brand",
+            "@id": "https://geargrid.live/#brand",
+            "name": "GearGrid",
+            "alternateName": [
+              "GearGrid",
+              "Gear Grid",
+              "GearGrid Live",
+              "geargrid.live",
+              "GearGrid Equipment Rental Software",
+              "GearGrid Rental System"
+            ],
+            "url": "https://geargrid.live/",
+            "logo": "https://geargrid.live/favicon-512x512.png",
+            "image": "https://geargrid.live/og-image.png",
+            "description": "GearGrid is an operating system and SaaS platform purpose-built for equipment, machinery, camera, and event rental businesses."
+          },
+          {
             "@type": "Organization",
             "@id": "https://geargrid.live/#org",
             "name": "GearGrid",
             "url": "https://geargrid.live/",
-            "logo": "https://geargrid.live/og-image.png",
-            "sameAs": ["https://app.geargrid.live"],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "sales",
-              "email": "contact@geargrid.live",
-              "telephone": "+94 7777 222 95",
-              "areaServed": "LK",
-              "availableLanguage": ["English", "Sinhala"]
-            }
+            "logo": "https://geargrid.live/favicon-512x512.png",
+            "sameAs": [
+              "https://app.geargrid.live",
+              "https://facebook.com/geargridlive"
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "telephone": "+94 7777 222 95",
+                "email": "contact@geargrid.live",
+                "areaServed": ["LK", "Worldwide"],
+                "availableLanguage": ["English", "Sinhala"]
+              },
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "telephone": "+94 7777 222 95",
+                "email": "support@geargrid.live",
+                "areaServed": ["LK", "Worldwide"],
+                "availableLanguage": ["English", "Sinhala"]
+              }
+            ]
           },
           {
             "@type": "WebSite",
             "@id": "https://geargrid.live/#website",
             "url": "https://geargrid.live/",
             "name": "GearGrid",
+            "alternateName": ["GearGrid Live", "geargrid.live"],
             "publisher": { "@id": "https://geargrid.live/#org" },
-            "inLanguage": "en"
+            "inLanguage": "en",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://geargrid.live/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://geargrid.live/#software",
+            "name": "GearGrid",
+            "applicationCategory": "BusinessApplication",
+            "applicationSubCategory": "Equipment Rental Management Software",
+            "operatingSystem": "Web, iOS, Android, macOS, Windows",
+            "url": "https://geargrid.live/",
+            "softwareVersion": "2.4",
+            "description": "Cloud rental management system with live availability, 60-second counter POS invoicing, ID card security vault, automated late fees, and workshop repair queue.",
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "LKR",
+              "lowPrice": "4900",
+              "highPrice": "9900",
+              "offerCount": 3
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "27",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
           }
         ]
       }
@@ -108,41 +175,56 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- No-JS fallback so crawlers/browsers without JS still get content and
-         indexable text instead of a blank page. -->
+
+    <!-- Semantic fallback for crawlers & non-JS visitors to index complete business offerings instantly -->
     <noscript>
-      <div
-        style="
-          font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
-          max-width: 720px;
-          margin: 4rem auto;
-          padding: 0 1.5rem;
-          color: #0f172a;
-        "
-      >
-        <h1 style="font-size: 2rem; font-weight: 600">GearGrid</h1>
-        <p style="font-size: 1.125rem; color: #475569; line-height: 1.6">
-          GearGrid is the operating system for equipment rental businesses —
-          inventory, contracts, maintenance, and accounting unified on a single
-          secure multi-tenant platform.
+      <header style="max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; font-family: system-ui, sans-serif;">
+        <h1 style="font-size: 2.25rem; font-weight: 700; color: #0f172a;">
+          GearGrid — Equipment Rental &amp; Inventory Management Software
+        </h1>
+        <p style="font-size: 1.25rem; color: #475569; line-height: 1.6; margin-top: 0.5rem;">
+          The all-in-one operating platform engineered for equipment rental businesses. Stop losing gear, eliminate double-bookings, protect collateral, and speed up counter checkouts.
         </p>
-        <p style="margin-top: 1.5rem">
-          This site uses JavaScript for the full experience. Please enable it,
-          or get in touch directly at
-          <a href="mailto:contact@geargrid.live" style="color: #f59e0b"
-            >contact@geargrid.live</a
-          >.
-        </p>
-        <p style="margin-top: 1rem">
-          <a href="https://app.geargrid.live/login" style="color: #f59e0b"
-            >Sign in to the console</a
-          >
-        </p>
-      </div>
+      </header>
+
+      <main style="max-width: 900px; margin: 0 auto; padding: 0 1.5rem 3rem; font-family: system-ui, sans-serif; color: #1e293b; line-height: 1.7;">
+        <section style="margin-top: 2rem;">
+          <h2 style="font-size: 1.5rem; color: #0f172a;">Core Platform Features</h2>
+          <ul>
+            <li><strong>Live Equipment Availability Calendar:</strong> Instant visibility into what is on shelf, rented out, overdue, or in maintenance. Never double-book high-value gear.</li>
+            <li><strong>60-Second Counter POS:</strong> Blazing-fast rental dispatch, contract generation, thermal receipt &amp; PDF invoice printing.</li>
+            <li><strong>Customer ID Card Security Vault:</strong> Record National Identity Card (NIC) or Passport numbers and lock collateral status to protect valuable rental assets.</li>
+            <li><strong>Automated Overdue Late Fees:</strong> Real-time automated fee calculation prevents awkward counter disputes when gear returns late.</li>
+            <li><strong>Integrated Workshop &amp; Repairs:</strong> Route returned defective gear directly to maintenance logs with repair cost tracking and deduction from customer deposits.</li>
+            <li><strong>Multi-Branch &amp; Mobile Ready:</strong> Access your rental counter and daily earnings from your smartphone, tablet, or laptop anywhere in the world.</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 style="font-size: 1.5rem; color: #0f172a;">Industries Built For</h2>
+          <ul>
+            <li><strong>Camera, Lens &amp; Cinema Production Rentals:</strong> Serialized gear tracking, kit bundling, and crew checkout.</li>
+            <li><strong>AV, Sound, Lighting &amp; Stage Gear:</strong> Event logistics, multi-day bookings, and roadcase pack lists.</li>
+            <li><strong>Power Tools &amp; Construction Equipment:</strong> Generators, drills, compactors, and heavy machinery hire.</li>
+            <li><strong>Party, Wedding &amp; Event Rentals:</strong> Tents, seating, decor, and catering equipment.</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border-radius: 8px;">
+          <h2 style="font-size: 1.25rem; color: #0f172a;">Get Started with GearGrid</h2>
+          <p>
+            Plans start at <strong>LKR 4,900/month</strong> (or <strong>$19 USD/month</strong> globally). Free onboarding and video training provided.
+          </p>
+          <p style="margin-top: 1rem;">
+            Direct Contact: <a href="mailto:contact@geargrid.live" style="color: #d97706; font-weight: 600;">contact@geargrid.live</a> | Phone: <a href="tel:+94777722295" style="color: #d97706; font-weight: 600;">+94 7777 222 95</a>
+          </p>
+          <p style="margin-top: 0.5rem;">
+            Head Office: Colombo, Sri Lanka (Available globally). Sign in to your portal at <a href="https://app.geargrid.live/login" style="color: #d97706;">app.geargrid.live</a>.
+          </p>
+        </section>
+      </main>
     </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,34 +1,52 @@
 {
-  "name": "GearGrid — Equipment Rental OS",
+  "name": "GearGrid — Equipment Rental & Inventory Management Software",
   "short_name": "GearGrid",
-  "description": "Multi-tenant SaaS for equipment rental businesses — inventory, contracts, maintenance, and accounting in one secure platform.",
+  "description": "The operating system for equipment rental businesses. Live inventory tracking, counter POS invoicing, ID card security vault, and automated billing.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0a0a0a",
   "lang": "en",
-  "categories": ["business", "productivity"],
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "shortcuts": [
     {
-      "name": "Contact",
+      "name": "Contact Team",
       "short_name": "Contact",
       "url": "/contact",
-      "description": "Talk to the GearGrid team"
+      "description": "Speak with the GearGrid product team"
     },
     {
-      "name": "Sign in",
+      "name": "Sign In to Console",
       "short_name": "Sign in",
       "url": "https://app.geargrid.live/login",
-      "description": "Sign in to the tenant console"
+      "description": "Sign in to your rental business dashboard"
     }
   ]
 }

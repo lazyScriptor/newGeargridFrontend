@@ -1,14 +1,34 @@
 # https://geargrid.live/robots.txt
-# Marketing site — open crawl. Our value is being found.
+# GearGrid Equipment Rental Management Software
 
 User-agent: *
 Allow: /
 Disallow: /api/
 
-# AI crawlers — explicit allow so our content is discoverable in AI answers.
-# (These bots interpret the absence of an explicit rule as "allowed" but
-# being explicit avoids ambiguity if defaults ever change.)
+# Explicit search engine crawler allowances
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI search engine crawlers — allow so GearGrid is cited in AI Overviews & Search
 User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: ClaudeBot
