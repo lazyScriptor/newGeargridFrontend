@@ -15,42 +15,7 @@ import CTA from "../components/sections/CTA";
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://geargrid.live/#software",
-      name: "GearGrid",
-      alternateName: [
-        "GearGrid",
-        "Gear Grid",
-        "GearGrid Live",
-        "geargrid.live",
-        "Machinery Rental Software Sri Lanka",
-        "Equipment Rental Software Sri Lanka",
-        "GearGrid Machinery Rental"
-      ],
-      description:
-        "Sri Lanka's leading machinery and equipment rental management system — live fleet availability, fast counter POS, customer NIC security vault, automated late fees, and workshop repair queue.",
-      applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Machinery & Equipment Rental Management Software",
-      operatingSystem: "Web, Android, iOS, Windows, macOS",
-      url: "https://geargrid.live/",
-      brand: {
-        "@type": "Brand",
-        "name": "GearGrid"
-      },
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "LKR",
-        lowPrice: "4900",
-        highPrice: "9900",
-        offerCount: 3,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "27",
-      },
-    },
+
     {
       "@type": "LocalBusiness",
       "@id": "https://geargrid.live/#localbusiness",
