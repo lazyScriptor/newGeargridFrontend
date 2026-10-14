@@ -226,8 +226,8 @@ export default function FeaturesPage() {
   return (
     <>
       <SEO
-        title="Features — rental management software capabilities"
-        description="Full feature breakdown of GearGrid rental management software: inventory tracking, rental contracts, maintenance, accounting, multi-warehouse, roles & permissions, and more."
+        title="Features - Machinery & Equipment Rental Management Software"
+        description="Full feature breakdown of GearGrid machinery and equipment rental software: fleet tracking, counter POS, maintenance, accounting, customer NIC vault, and multi-depot management."
         path="/features"
         jsonLd={jsonLd}
       />

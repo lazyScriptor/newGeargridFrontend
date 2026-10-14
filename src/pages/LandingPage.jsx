@@ -24,13 +24,15 @@ const homeJsonLd = {
         "Gear Grid",
         "GearGrid Live",
         "geargrid.live",
-        "GearGrid Equipment Rental Software"
+        "Machinery Rental Software Sri Lanka",
+        "Equipment Rental Software Sri Lanka",
+        "GearGrid Machinery Rental"
       ],
       description:
-        "Equipment rental management system — live inventory tracking, fast counter Point-of-Sale, customer ID security vault, automated late fees, and workshop repair management.",
+        "Sri Lanka's leading machinery and equipment rental management system — live fleet availability, fast counter POS, customer NIC security vault, automated late fees, and workshop repair queue.",
       applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Equipment Rental Management Software",
-      operatingSystem: "Web, iOS, Android, macOS, Windows",
+      applicationSubCategory: "Machinery & Equipment Rental Management Software",
+      operatingSystem: "Web, Android, iOS, Windows, macOS",
       url: "https://geargrid.live/",
       brand: {
         "@type": "Brand",
@@ -77,7 +79,7 @@ const homeJsonLd = {
           name: "What kind of rental businesses is GearGrid built for?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "GearGrid is purpose-built for equipment rental businesses — including cameras and cinema equipment, AV sound and lighting, party and wedding rentals, power tools, generators, and event gear.",
+            text: "GearGrid is purpose-built for machinery and equipment rental businesses in Sri Lanka and worldwide - including construction machinery, plant hire, generators, power tools, cinema cameras, AV sound and lighting, party and wedding rentals, and event gear.",
           },
         },
         {
@@ -129,8 +131,8 @@ export default function LandingPage() {
   return (
     <>
       <SEO
-        title="Equipment Rental & Inventory Management Software"
-        description="Stop losing gear and double-booking. GearGrid provides fast counter POS invoicing, live equipment availability, ID card security vault, and automatic late fees for rental businesses."
+        title="Machinery & Equipment Rental Software Sri Lanka"
+        description="GearGrid is Sri Lanka's #1 machinery and equipment rental software. Live fleet tracking, 30-sec counter POS, customer NIC security vault, and automated late fees."
         path="/"
         jsonLd={homeJsonLd}
       />

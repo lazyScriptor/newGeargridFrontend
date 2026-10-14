@@ -178,8 +178,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Pricing — GearGrid rental management software"
-        description="Transparent pricing for GearGrid rental management software. Starter from Rs 4,900/month, Pro from Rs 9,900/month, plus custom Enterprise. No setup fees. Cancel anytime."
+        title="Pricing - GearGrid Rental & Machinery Management Software"
+        description="Transparent pricing for GearGrid machinery and equipment rental software in Sri Lanka and worldwide. Starter from Rs 4,900/month, Pro from Rs 9,900/month, plus custom Enterprise. No setup fees. Cancel anytime."
         path="/pricing"
         jsonLd={jsonLd}
       />

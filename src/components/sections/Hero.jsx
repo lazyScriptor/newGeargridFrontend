@@ -41,7 +41,7 @@ export default function Hero() {
           <motion.div variants={fadeUp}>
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50/90 px-4 py-1.5 text-xs font-semibold text-amber-900 shadow-sm backdrop-blur">
               <IconSparkles size={14} className="text-amber-600" />
-              Equipment Rental & Inventory Management Software
+              Machinery &amp; Equipment Rental Software · Sri Lanka &amp; Global
             </span>
           </motion.div>
 
@@ -70,9 +70,10 @@ export default function Hero() {
             variants={fadeUp}
             className="mx-auto mt-6 max-w-2xl text-balance text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            The practical point-of-sale and inventory system built for camera, AV, party, and tool
-            rental operators. Prevent double-booking, lock customer ID security deposits, and print
-            instant invoices with automatic late fees — straight from your phone or PC.
+            The all-in-one machinery and equipment rental software built for Sri Lankan and global
+            operators. From construction machinery, generators, and power tools to cameras, AV,
+            and event gear - prevent double-booking, lock customer NIC security deposits, and print
+            instant invoices with automatic late fees straight from your phone or PC.
           </motion.p>
 
           {/* CTAs */}

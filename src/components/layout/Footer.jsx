@@ -41,8 +41,8 @@ export default function Footer() {
               <Logo size={32} />
             </div>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-slate-600">
-              GearGrid is the practical equipment rental management system — live
-              inventory tracking, 30-second POS invoicing, customer ID security vault,
+              GearGrid is Sri Lanka's leading machinery and equipment rental software - live
+              fleet tracking, 30-second POS invoicing, customer NIC security vault,
               automated late fees, and workshop repair management.
             </p>
             <div className="mt-6 flex items-center gap-3 text-xs text-slate-500">

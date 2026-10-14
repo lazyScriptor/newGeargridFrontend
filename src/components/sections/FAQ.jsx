@@ -10,7 +10,7 @@ import { fadeUp, stagger } from "../../lib/motion";
 const FAQS = [
   {
     q: "What kind of rental businesses is GearGrid built for?",
-    a: "GearGrid is purpose-built for equipment rental businesses — including cameras and cinema equipment, AV sound and lighting, party and wedding rentals, power tools, generators, and event gear.",
+    a: "GearGrid is purpose-built for machinery and equipment rental businesses in Sri Lanka and worldwide - including construction machinery, plant hire, generators, power tools, cinema cameras, AV sound and lighting, party and wedding rentals, and event gear.",
   },
   {
     q: "Can my non-technical counter staff learn to use it quickly?",

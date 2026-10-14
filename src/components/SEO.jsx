@@ -25,15 +25,15 @@ export default function SEO({
 }) {
   const url = `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
   const defaultTitle =
-    "GearGrid — Equipment Rental & Inventory Management Software";
+    "GearGrid - Machinery & Equipment Rental Software Sri Lanka";
   const fullTitle = title
     ? title.includes("GearGrid")
-      ? title
-      : `GearGrid — ${title}`
+      ? title.replace(/ — /g, " - ")
+      : `GearGrid - ${title}`
     : defaultTitle;
   const desc =
     description ||
-    "GearGrid is the leading equipment rental and inventory management software. Real-time availability, counter POS invoicing, ID card security vault, and automated billing.";
+    "GearGrid is Sri Lanka's #1 machinery and equipment rental software. Real-time fleet availability, counter POS invoicing, customer NIC security vault, and automated late fees.";
   const imageUrl = image.startsWith("http") ? image : `${SITE}${image}`;
 
   return (

@@ -130,8 +130,8 @@ export default function ContactPage() {
   return (
     <main className="relative">
       <SEO
-        title="Contact us"
-        description="Talk to the GearGrid team — request a demo, ask about pricing, or get technical support. We reply within one business day."
+        title="Contact Us - Request a Demo"
+        description="Talk to the GearGrid team - request a demo, ask about pricing in Sri Lanka, or get technical support. We reply within one business day."
         path="/contact"
         jsonLd={contactJsonLd}
       />

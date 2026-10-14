@@ -198,8 +198,8 @@ export default function RentalManagementSoftwarePage() {
   return (
     <>
       <SEO
-        title="Rental Management Software"
-        description="GearGrid is rental management software for equipment, machinery, and tool rental businesses. Inventory, contracts, maintenance, and accounting on one secure multi-tenant cloud platform."
+        title="Machinery & Equipment Rental Software Sri Lanka"
+        description="GearGrid is Sri Lanka's leading machinery and equipment rental software. Manage construction plant hire, power tools, heavy machinery, contracts, and workshop maintenance on one secure platform."
         path="/rental-management-software"
         jsonLd={jsonLd}
       />
