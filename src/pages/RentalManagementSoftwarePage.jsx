@@ -252,7 +252,7 @@ export default function RentalManagementSoftwarePage() {
                 variants={fadeUp}
                 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl md:text-7xl"
               >
-                Rental management software{" "}
+                Machine &amp; equipment rental software{" "}
                 <span className="bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-transparent">
                   for serious operators.
                 </span>
@@ -262,10 +262,9 @@ export default function RentalManagementSoftwarePage() {
                 variants={fadeUp}
                 className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-slate-600 sm:text-xl"
               >
-                GearGrid is cloud rental management software for equipment,
-                machinery, and tool rental businesses — inventory, rental
-                contracts, maintenance, and accounting on a single secure
-                multi-tenant platform.
+                GearGrid is the leading machine rental software in Sri Lanka and worldwide for
+                equipment, machinery, and tool rental businesses - inventory, rental contracts,
+                NIC security, maintenance, and accounting on a single secure cloud platform.
               </motion.p>
 
               <motion.div

@@ -25,7 +25,7 @@ export default function SEO({
 }) {
   const url = `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
   const defaultTitle =
-    "GearGrid - Machinery & Equipment Rental Software Sri Lanka";
+    "GearGrid - Machine & Equipment Rental Software Sri Lanka";
   const fullTitle = title
     ? title.includes("GearGrid")
       ? title.replace(/ — /g, " - ")
@@ -33,7 +33,7 @@ export default function SEO({
     : defaultTitle;
   const desc =
     description ||
-    "GearGrid is Sri Lanka's #1 machinery and equipment rental software. Real-time fleet availability, counter POS invoicing, customer NIC security vault, and automated late fees.";
+    "GearGrid is Sri Lanka's #1 machine and equipment rental software. Real-time fleet availability, counter POS invoicing, customer NIC security vault, and automated late fees.";
   const imageUrl = image.startsWith("http") ? image : `${SITE}${image}`;
 
   return (

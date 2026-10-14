@@ -96,8 +96,8 @@ export default function LandingPage() {
   return (
     <>
       <SEO
-        title="Machinery & Equipment Rental Software Sri Lanka"
-        description="GearGrid is Sri Lanka's #1 machinery and equipment rental software. Live fleet tracking, 30-sec counter POS, customer NIC security vault, and automated late fees."
+        title="Machine & Equipment Rental Software Sri Lanka"
+        description="GearGrid is Sri Lanka's #1 machine and equipment rental software. Live fleet tracking, 30-sec counter POS, customer NIC security vault, and automated late fees."
         path="/"
         jsonLd={homeJsonLd}
       />
