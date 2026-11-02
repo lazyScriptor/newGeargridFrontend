@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "geargrid-website",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown URLs return index.html so React Router can handle them
+    // (replaces the catch-all rewrite in vercel.json).
+    "not_found_handling": "single-page-application"
+  }
+}
