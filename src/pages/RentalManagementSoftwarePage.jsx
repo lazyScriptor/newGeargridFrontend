@@ -56,7 +56,7 @@ const jsonLd = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "LKR",
-        lowPrice: "4900",
+        lowPrice: "5900",
         highPrice: "9900",
         offerCount: 3,
         url: "https://geargrid.live/pricing",

@@ -12,7 +12,7 @@ export default function Pricing() {
   const TIERS = [
     {
       name: "Starter",
-      price: currency === "LKR" ? "Rs. 4,900" : "$19",
+      price: currency === "LKR" ? "Rs. 5,900" : "$19",
       cadence: "/ month",
       blurb: "Perfect for single-location camera, AV, party, or tool rental shops.",
       features: [

@@ -22,7 +22,7 @@ const homeJsonLd = {
       name: "GearGrid",
       url: "https://geargrid.live/",
       image: "https://geargrid.live/og-image.png",
-      priceRange: "LKR 4,900 – 9,900/month",
+      priceRange: "LKR 5,900 – 9,900/month",
       telephone: "+94-77-772-2295",
       email: "contact@geargrid.live",
       address: {

@@ -15,9 +15,9 @@ import { fadeUp, stagger, ease } from "../lib/motion";
 const TIERS = [
   {
     name: "Starter",
-    price: "Rs 4,900",
+    price: "Rs 5,900",
     cadence: "/ month",
-    monthly: 4900,
+    monthly: 5900,
     blurb: "Everything you need to run a single warehouse.",
     cta: "Start with Starter",
     accent: false,
@@ -143,7 +143,7 @@ const jsonLd = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "LKR",
-        lowPrice: "4900",
+        lowPrice: "5900",
         highPrice: "9900",
         offerCount: 3,
         url: "https://geargrid.live/pricing",
@@ -179,7 +179,7 @@ export default function PricingPage() {
     <>
       <SEO
         title="Pricing - GearGrid Rental & Machinery Management Software"
-        description="Transparent pricing for GearGrid machinery and equipment rental software in Sri Lanka and worldwide. Starter from Rs 4,900/month, Pro from Rs 9,900/month, plus custom Enterprise. No setup fees. Cancel anytime."
+        description="Transparent pricing for GearGrid machinery and equipment rental software in Sri Lanka and worldwide. Starter from Rs 5,900/month, Pro from Rs 9,900/month, plus custom Enterprise. No setup fees. Cancel anytime."
         path="/pricing"
         jsonLd={jsonLd}
       />
