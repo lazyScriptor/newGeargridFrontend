@@ -61,11 +61,6 @@ const jsonLd = {
         offerCount: 3,
         url: "https://geargrid.live/pricing",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "27",
-      },
     },
     {
       "@type": "FAQPage",
@@ -199,7 +194,7 @@ export default function RentalManagementSoftwarePage() {
     <>
       <SEO
         title="Machinery & Equipment Rental Software Sri Lanka"
-        description="GearGrid is Sri Lanka's leading machinery and equipment rental software. Manage construction plant hire, power tools, heavy machinery, contracts, and workshop maintenance on one secure platform."
+        description="GearGrid is Sri Lankan machinery and equipment rental software. Manage construction plant hire, power tools, heavy machinery, contracts, and workshop maintenance on one secure platform."
         path="/rental-management-software"
         jsonLd={jsonLd}
       />
@@ -262,7 +257,7 @@ export default function RentalManagementSoftwarePage() {
                 variants={fadeUp}
                 className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-slate-600 sm:text-xl"
               >
-                GearGrid is the leading machine rental software in Sri Lanka and worldwide for
+                GearGrid is machine rental software, in Sri Lanka and worldwide, for
                 equipment, machinery, and tool rental businesses - inventory, rental contracts,
                 NIC security, maintenance, and accounting on a single secure cloud platform.
               </motion.p>

@@ -231,8 +231,8 @@ export default function PricingPage() {
                 className="mx-auto mt-6 max-w-2xl text-balance text-lg text-slate-600"
               >
                 Pricing in Sri Lankan Rupees. No setup fees. Cancel any time.
-                Most operators cover the monthly cost with a single avoided
-                late-fee miss.
+                A single avoided late-fee miss can cover the monthly
+                cost.
               </motion.p>
             </motion.div>
           </Container>
