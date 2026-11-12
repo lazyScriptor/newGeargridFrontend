@@ -44,7 +44,7 @@ export function Contact({ plan }: { plan: PlanId | null }) {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-paper py-20 sm:py-28">
+    <section id="contact" className="relative overflow-hidden bg-paper/55 py-20 sm:py-28">
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-[40vmax] -right-[20vmax] h-[70vmax] w-[70vmax] rounded-full bg-[radial-gradient(circle,rgba(245,166,35,0.12)_0%,rgba(245,166,35,0)_60%)]" />
       <Container className="relative grid gap-12 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">

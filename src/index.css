@@ -119,3 +119,164 @@ html[lang='si'] .display {
 .float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* ---------- Video sound pill ---------- */
+@keyframes sound-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 15px; }
+}
+.sound-bar {
+  height: 6px;
+  animation: sound-bar 0.9s ease-in-out infinite;
+}
+@keyframes sound-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.45), 0 1px 2px rgba(0, 0, 0, 0.06); }
+  60% { box-shadow: 0 0 0 10px rgba(245, 166, 35, 0), 0 1px 2px rgba(0, 0, 0, 0.06); }
+}
+.sound-breathe {
+  animation: sound-breathe 2.4s ease-out infinite;
+}
+
+/* ---------- Step icons (play only once the card is on screen) ---------- */
+.reveal:not(.is-in) .glyph-anim,
+.reveal:not(.is-in) .glyph-anim * {
+  animation-play-state: paused !important;
+}
+@keyframes yard-pulse {
+  0%, 70%, 100% { fill: transparent; stroke: rgba(20, 23, 31, 0.25); }
+  78%, 88% { fill: var(--color-brand); stroke: var(--color-brand); }
+}
+.yard-tile {
+  fill: transparent;
+  stroke: rgba(20, 23, 31, 0.25);
+  animation: yard-pulse 5.4s ease-in-out infinite both;
+}
+@keyframes receipt-draw {
+  0%, 15% { stroke-dashoffset: 30; }
+  45%, 100% { stroke-dashoffset: 0; }
+}
+.receipt-line {
+  stroke-dasharray: 30;
+  animation: receipt-draw 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes tick-pop {
+  0%, 40% { transform: scale(0.6); opacity: 0; }
+  55% { transform: scale(1.12); opacity: 1; }
+  65%, 92% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.6); opacity: 0; }
+}
+.tick-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tick-pop 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes clock-hand {
+  to { transform: rotate(360deg); }
+}
+.clock-hand {
+  transform-origin: 60px 60px;
+  animation: clock-hand 8s linear infinite;
+}
+.clock-hand-fast {
+  transform-origin: 60px 60px;
+  animation: clock-hand 2s linear infinite;
+}
+@keyframes arc-grow {
+  0%, 100% { stroke-dashoffset: 40; }
+  50% { stroke-dashoffset: 0; }
+}
+.clock-arc {
+  stroke-dasharray: 80 160;
+  animation: arc-grow 4s ease-in-out infinite;
+}
+@keyframes bar-rise {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+.phone-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: bar-rise 2.6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+
+/* ---------- Pricing: a light that runs around the Pro card now and then ---------- */
+@property --gg-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes gg-orbit {
+  0% { --gg-angle: 0deg; opacity: 0; }
+  6% { opacity: 1; }
+  44% { opacity: 1; }
+  50% { --gg-angle: 360deg; opacity: 0; }
+  100% { --gg-angle: 360deg; opacity: 0; }
+}
+.pro-ring {
+  pointer-events: none;
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 25.5px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--gg-angle),
+    transparent 0deg 230deg,
+    rgba(245, 166, 35, 0.25) 280deg,
+    #f5a623 330deg,
+    #fff4dc 350deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: gg-orbit 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+.pro-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -1px;
+  border-radius: 26px;
+  box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.18), 0 30px 70px -30px rgba(245, 166, 35, 0.55);
+}
+
+/* ---------- Ambient background ---------- */
+@keyframes amb-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-6vw, 5vh, 0) scale(1.12); }
+}
+@keyframes amb-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(7vw, -6vh, 0) scale(0.92); }
+}
+@keyframes amb-c {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-3vw, -4vh, 0) rotate(8deg); }
+}
+.amb-a { animation: amb-a 26s ease-in-out infinite; }
+.amb-b { animation: amb-b 32s ease-in-out infinite; }
+.amb-c { animation: amb-c 40s ease-in-out infinite; }
+@keyframes line-flow {
+  to { stroke-dashoffset: -1200; }
+}
+.amb-line {
+  stroke-dasharray: 380 820;
+  animation: line-flow 38s linear infinite;
+}
+
+/* ---------- Screens showcase ---------- */
+@keyframes story-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.story-fill {
+  transform-origin: left;
+  animation: story-fill var(--story-ms, 4800ms) linear forwards;
+}
+@keyframes screen-shine {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+.screen-shine {
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  animation: screen-shine 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}

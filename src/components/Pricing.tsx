@@ -7,12 +7,12 @@ import { Reveal } from './Reveal'
 export type PlanId = 'starter' | 'pro' | 'enterprise'
 
 export function Pricing({ onChoose }: { onChoose: (plan: PlanId) => void }) {
-  const { t, isSriLanka } = useI18n()
+  const { t, isSriLanka, lang } = useI18n()
   // Rupees for visitors in Sri Lanka, dollars elsewhere.
   const [currency, setCurrency] = useState<Currency>(isSriLanka ? 'LKR' : 'USD')
 
   return (
-    <section id="pricing" className="bg-paper py-20 sm:py-28">
+    <section id="pricing" className="bg-paper/55 py-20 sm:py-28">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <Reveal>
@@ -42,15 +42,21 @@ export function Pricing({ onChoose }: { onChoose: (plan: PlanId) => void }) {
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 lg:grid-cols-3">
           {t.pricing.plans.map((p, i) => {
             const featured = p.id === 'pro'
-            const price = p.id === 'enterprise' ? t.pricing.custom : PRICES[currency][p.id as 'starter' | 'pro']
+            const price = p.id === 'enterprise' ? '' : PRICES[currency][p.id as 'starter' | 'pro']
             return (
               <Reveal
                 key={p.id}
                 delay={i * 90}
                 className={`relative flex flex-col rounded-[24px] p-7 sm:p-8 ${
-                  featured ? 'bg-ink text-white' : 'bg-white text-ink ring-1 ring-line'
+                  featured ? 'bg-ink text-white' : 'bg-white/85 text-ink ring-1 ring-line backdrop-blur-sm'
                 }`}
               >
+                {featured && (
+                  <>
+                    <span aria-hidden="true" className="pro-glow" />
+                    <span aria-hidden="true" className="pro-ring" />
+                  </>
+                )}
                 <div className="flex items-center justify-between">
                   <h3 className="text-[18px] font-semibold tracking-tight">{p.name}</h3>
                   {featured && (
@@ -61,11 +67,29 @@ export function Pricing({ onChoose }: { onChoose: (plan: PlanId) => void }) {
                 </div>
                 <p className={`mt-2 text-[14px] ${featured ? 'text-white/65' : 'text-muted'}`}>{p.blurb}</p>
 
-                <div className="mt-8 flex items-baseline gap-1.5">
-                  <span className="text-[40px] font-semibold tracking-[-0.03em] tabular-nums">{price}</span>
-                  {p.id !== 'enterprise' && (
-                    <span className={`text-[14px] ${featured ? 'text-white/55' : 'text-faint'}`}>{t.pricing.perMonth}</span>
-                  )}
+                {/* Every plan starts free; the price applies from month 2 */}
+                <div className="mt-8">
+                  <div className="flex items-baseline gap-2.5">
+                    <span
+                      className={`font-semibold leading-none tracking-[-0.035em] ${lang === 'si' ? 'text-[32px]' : 'text-[44px]'} ${
+                        featured ? 'text-brand' : 'text-ink'
+                      }`}
+                    >
+                      {t.pricing.free}
+                    </span>
+                    <span className={`text-[14px] ${featured ? 'text-white/60' : 'text-muted'}`}>{t.pricing.freeFor}</span>
+                  </div>
+                  <p className={`mt-3 text-[14px] ${featured ? 'text-white/60' : 'text-muted'}`}>
+                    {p.id === 'enterprise' ? (
+                      t.pricing.customAfter
+                    ) : (
+                      <>
+                        {t.pricing.then}{' '}
+                        <span className={`text-[16px] font-semibold tabular-nums ${featured ? 'text-white' : 'text-ink'}`}>{price}</span>{' '}
+                        {t.pricing.perMonth} · {t.pricing.fromMonth2}
+                      </>
+                    )}
+                  </p>
                 </div>
 
                 <ul className={`mt-8 space-y-3 border-t pt-6 text-[15px] ${featured ? 'border-white/10' : 'border-line'}`}>
