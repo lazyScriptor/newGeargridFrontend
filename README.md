@@ -1,16 +1,26 @@
-# React + Vite
+# GearGrid landing page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite + React 19 + TypeScript + Tailwind v4. A single page that is white, minimal and uses the amber brand colour, with English and Sinhala versions.
 
-Currently, two official plugins are available:
+## Sections
+Hero (3D tile grid) → Video → How it works → Pricing → FAQ → Contact → Footer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| File | What |
+|---|---|
+| `src/i18n/dictionary.ts` | All copy, English + Sinhala |
+| `src/i18n/LanguageProvider.tsx` | Picks the language in this order: `?lang=` link, saved choice, then country (Sri Lanka gets Sinhala) |
+| `src/lib/geo.ts` | Detects Sri Lanka in the browser (time zone / locale), with no network call |
+| `src/lib/config.ts` | Video IDs, prices, phone, WhatsApp, API base |
+| `src/components/HeroGrid.tsx` | three.js grid. Lazy-loaded and paused when off screen |
+| `src/components/LaunchConsole.tsx` + `ConsoleScene.tsx` | Launch console band with a three.js tile wave, linking to app.geargrid.live |
+| `src/components/VideoSection.tsx` | Starts muted when scrolled into view and pauses when scrolled away. Has a language switch and a sound button |
 
-## React Compiler
+The contact form posts to `https://api.geargrid.live/api/contact/inquiry` (override with `VITE_API_URL`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Pushing to `main` deploys: `.github/workflows/deploy-landing.yml` builds and rsyncs `dist/` to the server behind geargrid.live.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev     # dev server
+npm run build   # typecheck + production build
+npm run lint
+```

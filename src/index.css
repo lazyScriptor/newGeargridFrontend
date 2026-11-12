@@ -1,36 +1,121 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source not "../legacy";
 
-/* Apple-style system stack — same as macOS defaults */
-@layer base {
+@theme {
+  --font-sans: 'Inter', 'Noto Sans Sinhala', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-ink: #14171f;
+  --color-ink-2: #2c323d;
+  --color-muted: #5b6270;
+  --color-faint: #8a909c;
+  --color-line: #e9eaee;
+  --color-paper: #f7f7f8;
+  --color-brand: #f5a623;
+  --color-brand-deep: #d98a1f;
+  --color-brand-soft: #fff5e3;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* clip, not hidden: hidden would break position: sticky */
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-brand-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Sinhala needs taller lines and no negative tracking to stay legible. */
+html[lang='si'] .display {
+  letter-spacing: -0.005em;
+  line-height: 1.22;
+}
+
+.display {
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+/* Reveal on scroll, toggled by <Reveal>. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
   }
-  body {
-    font-family:
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      "SF Pro Display",
-      "SF Pro Text",
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
-  :focus-visible {
-    outline: 2px solid theme("colors.slate.900");
-    outline-offset: 2px;
-    border-radius: 6px;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
-@layer utilities {
-  /* text-wrap: balance for better headline wrapping */
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Soft abstract drift for background shapes */
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, -3%, 0) scale(1.04); }
+}
+.drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Gentle hover-in-air motion for the hero cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float {
+  animation: float 6s ease-in-out infinite;
 }
