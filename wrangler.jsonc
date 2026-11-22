@@ -4,8 +4,8 @@
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
-    // Unknown URLs return index.html so React Router can handle them
-    // (replaces the catch-all rewrite in vercel.json).
-    "not_found_handling": "single-page-application"
+    // Every page is prerendered to its own HTML file; unknown URLs get dist/404.html
+    // with a real 404 status (a single-page fallback would answer 200 with the home page).
+    "not_found_handling": "404-page"
   }
 }

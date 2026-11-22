@@ -59,8 +59,9 @@ html[lang='si'] .display {
   text-wrap: balance;
 }
 
-/* Reveal on scroll, toggled by <Reveal>. */
-.reveal {
+/* Reveal on scroll, toggled by <Reveal>. Only hidden when JavaScript runs (index.html adds
+   the `js` class), so the prerendered page is fully readable without it. */
+.js .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -68,7 +69,7 @@ html[lang='si'] .display {
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--delay, 0ms);
 }
-.reveal.is-in {
+.js .reveal.is-in {
   opacity: 1;
   transform: none;
 }
@@ -77,7 +78,7 @@ html[lang='si'] .display {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;

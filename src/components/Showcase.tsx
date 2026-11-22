@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useSyncExternalStore, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useI18n } from '../i18n/LanguageProvider'
 import { useInView } from '../hooks/useInView'
 import { Container } from './Container'
@@ -6,6 +6,7 @@ import { Reveal } from './Reveal'
 
 const SCREENS = ['dashboard', 'inventory', 'orders', 'customers', 'equipment', 'invoices'] as const
 const STORY_MS = 4800
+const noSubscribe = () => () => {}
 
 // Where each card sits, by distance from the front (k). The card that just
 // left the front (k = n - 1) floats toward the viewer and fades out.
@@ -32,7 +33,12 @@ export function Showcase() {
   const [sectionRef, inView] = useInView<HTMLElement>({ threshold: 0.2 })
   const deckRef = useRef<HTMLDivElement>(null)
   const swipeX = useRef<number | null>(null)
-  const [reduceMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  // Read in the browser only, so the prerendered HTML and the first client render match.
+  const reduceMotion = useSyncExternalStore(
+    noSubscribe,
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => false,
+  )
   const running = inView && !hovered && !reduceMotion
 
   useEffect(() => {

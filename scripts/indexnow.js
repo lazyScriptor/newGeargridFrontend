@@ -15,13 +15,12 @@ const HOST = "geargrid.live";
 const ORIGIN = `https://${HOST}`;
 const KEY_LOCATION = `${ORIGIN}/${KEY}.txt`;
 
-const DEFAULT_URLS = [
-  `${ORIGIN}/`,
-  `${ORIGIN}/rental-management-software`,
-  `${ORIGIN}/features`,
-  `${ORIGIN}/pricing`,
-  `${ORIGIN}/contact`,
-];
+// Every page in the built sitemap (run after `npm run build`), or the main pages if there is none.
+import { existsSync, readFileSync } from "node:fs";
+const SITEMAP = new URL("../dist/sitemap.xml", import.meta.url);
+const DEFAULT_URLS = existsSync(SITEMAP)
+  ? [...readFileSync(SITEMAP, "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+  : [`${ORIGIN}/`, `${ORIGIN}/si/`, `${ORIGIN}/features`, `${ORIGIN}/pricing`, `${ORIGIN}/rental-management-software`];
 
 const argv = process.argv.slice(2);
 const urls = argv.length ? argv : DEFAULT_URLS;
