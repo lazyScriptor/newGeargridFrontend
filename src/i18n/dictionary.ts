@@ -2,11 +2,6 @@
 // Keep sentences short and plain, with no technical words.
 
 const en = {
-  meta: {
-    title: 'GearGrid - Machine & Equipment Rental Software Sri Lanka',
-    description:
-      'Rental software for machinery and equipment shops in Sri Lanka. Track every machine, bill instantly and get paid on time.',
-  },
   nav: {
     how: 'How it works',
     video: 'Video',
@@ -150,11 +145,6 @@ const en = {
 export type Dict = typeof en
 
 const si: Dict = {
-  meta: {
-    title: 'GearGrid | ඔබේ Rental ව්‍යාපාරය, දැන් ලේසියි',
-    description:
-      'Machinery සහ උපකරණ කුලියට දෙන ව්‍යාපාර වලට. Stock එක බලන්න, එසැණින් bill එක දාන්න, හරියට සල්ලි ගන්න.',
-  },
   nav: {
     how: 'වැඩ කරන හැටි',
     video: 'වීඩියෝ',

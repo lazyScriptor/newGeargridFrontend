@@ -1,33 +1,37 @@
-import { useState } from 'react'
-import { Ambient } from './components/Ambient'
-import { Contact } from './components/Contact'
-import { FAQ } from './components/FAQ'
-import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
-import { HowItWorks } from './components/HowItWorks'
-import { LaunchConsole } from './components/LaunchConsole'
-import { Nav } from './components/Nav'
-import { Pricing, type PlanId } from './components/Pricing'
-import { Showcase } from './components/Showcase'
-import { VideoSection } from './components/VideoSection'
+import { useEffect } from 'react'
+import { Layout } from './components/Layout'
+import { LanguageProvider } from './i18n/LanguageProvider'
+import { findRoute } from './lib/routing'
+import * as NotFound from './pages/NotFound'
+import { ROUTES } from './routes'
+import { applyHead, buildHead } from './seo/head'
+import { RouterProvider, useRouter } from './router'
 
-export default function App() {
-  const [plan, setPlan] = useState<PlanId | null>(null)
+function Page() {
+  const { path } = useRouter()
+  const route = findRoute(ROUTES, path)
+  const lang = route?.lang ?? 'en'
+  const Component = route ? route.page.default : NotFound.default
+
+  // Moving between / and /si/ keeps the page mounted, so refresh the head here.
+  useEffect(() => {
+    if (!route) return
+    applyHead(buildHead(route, route.page.meta[route.lang] ?? route.page.meta.en, route.lang))
+  }, [route])
+
   return (
-    <>
-      <Ambient />
-      <Nav />
-      <main>
-        <Hero />
-        <VideoSection />
-        <Showcase />
-        <HowItWorks />
-        <Pricing onChoose={setPlan} />
-        <FAQ />
-        <Contact plan={plan} />
-        <LaunchConsole />
-      </main>
-      <Footer />
-    </>
+    <LanguageProvider lang={lang}>
+      <Layout>
+        <Component />
+      </Layout>
+    </LanguageProvider>
+  )
+}
+
+export default function App({ path }: { path: string }) {
+  return (
+    <RouterProvider initialPath={path}>
+      <Page />
+    </RouterProvider>
   )
 }

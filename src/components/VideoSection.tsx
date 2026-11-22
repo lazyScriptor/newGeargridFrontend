@@ -74,7 +74,8 @@ export function VideoSection() {
   const [pick, setPick] = useState<{ site: Lang; video: Lang } | null>(null)
   const videoLang = pick && pick.site === lang ? pick.video : lang
 
-  const [pageLoaded, setPageLoaded] = useState(() => document.readyState === 'complete')
+  // False on the server and the first client render (so hydration matches); set once the page has loaded.
+  const [pageLoaded, setPageLoaded] = useState(false)
   const [wantSound, setWantSound] = useState(true)
   const [playerMuted, setPlayerMuted] = useState(true)
   const [playing, setPlaying] = useState(false)
@@ -99,6 +100,10 @@ export function VideoSection() {
   useEffect(() => {
     if (pageLoaded) return
     const onLoad = () => setPageLoaded(true)
+    if (document.readyState === 'complete') {
+      onLoad()
+      return
+    }
     window.addEventListener('load', onLoad, { once: true })
     return () => window.removeEventListener('load', onLoad)
   }, [pageLoaded])
