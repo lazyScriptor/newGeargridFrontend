@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n/LanguageProvider'
 import { SIGN_IN_URL } from '../lib/config'
+import { sectionHref } from '../lib/routing'
+import { useRouter } from '../router'
 import { LangSwitch } from './LangSwitch'
 import { Logo } from './Logo'
 
 export function Nav() {
   const { t, lang, setLang } = useI18n()
+  const { path } = useRouter()
+  const to = (hash: string) => sectionHref(path, lang, hash)
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -24,10 +28,10 @@ export function Nav() {
   }, [open])
 
   const links = [
-    { href: '#how', label: t.nav.how },
-    { href: '#video', label: t.nav.video },
-    { href: '#pricing', label: t.nav.pricing },
-    { href: '#faq', label: t.nav.faq },
+    { href: to('#how'), label: t.nav.how },
+    { href: to('#video'), label: t.nav.video },
+    { href: to('#pricing'), label: t.nav.pricing },
+    { href: to('#faq'), label: t.nav.faq },
   ]
 
   return (
@@ -37,7 +41,7 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
-        <a href="#top" aria-label="GearGrid" onClick={() => setOpen(false)}>
+        <a href={to('#top')} aria-label="GearGrid" onClick={() => setOpen(false)}>
           <Logo />
         </a>
 
@@ -61,7 +65,7 @@ export function Nav() {
             </svg>
           </a>
           <a
-            href="#pricing"
+            href={to('#pricing')}
             className="hidden rounded-full bg-ink px-5 py-2.5 text-[14px] font-medium text-white transition hover:bg-ink-2 active:scale-[0.98] sm:inline-flex"
           >
             {t.nav.cta}
@@ -108,7 +112,7 @@ export function Nav() {
           ))}
           <div className="mt-auto grid gap-3">
             <a
-              href="#pricing"
+              href={to('#pricing')}
               onClick={() => setOpen(false)}
               className="rounded-full bg-ink py-3.5 text-center text-[15px] font-medium text-white"
             >
